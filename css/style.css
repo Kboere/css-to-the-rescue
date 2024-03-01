@@ -36,9 +36,6 @@
     display: block;
     width: fit-content;
 }
-  .switch, .switch__input {
-    -webkit-tap-highlight-color: transparent;
-  }
   .switch__input {
     cursor: pointer;
     display: block;
@@ -74,7 +71,7 @@
     height: 0.75em;
 }
   .switch__input:checked:before {
-    transform: rotate(25deg) translateX(3px);
+    transform: rotate(25deg) translateX(4px);
 }
   .switch__input:checked:after {
     transform: translateY(1.1em);
