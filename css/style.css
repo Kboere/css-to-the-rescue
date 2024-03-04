@@ -225,16 +225,18 @@ output {
 		down 5s linear both paused;
 
 	/* add clamp to keep the output in the article */
-	translate: clamp(
-		0em, 
-		calc((var(--distance-max)) * (var(--right) - var(--left))), 
-		var(--distance-max)
+	translate: 
+		clamp(
+			0em, 
+			calc((var(--distance-max)) * (var(--right) - var(--left))), 
+			var(--distance-max)
 		)
-
+		
 	 	clamp(
 			0em, 
 			calc((var(--distance-max)) * (var(--down) - var(--up))), 
-			var(--distance-max))
+			var(--distance-max)
+		)
 	;
 }
 
