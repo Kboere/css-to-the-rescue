@@ -10,36 +10,52 @@
 
 <body>
 
-    
-<label class="switch">
-    <input class="switch__input" type="checkbox" role="switch" name="party-mode">
-</label>
 
-<button id="cam2" value="cam2">View 1</button>
-<button id="cam3" value="cam3">View 2</button>
-<button id="cam4" value="cam4">View 3</button>
+    <label class="switch">
+        <input class="switch__input" type="checkbox" role="switch" name="party-mode">
+    </label>
 
-<section>
-    <div>
-        <button aria-label="up">←</button>
-        <button aria-label="down">←</button>
-        <button aria-label="left">←</button>
-        <button aria-label="right">←</button>
+    <button id="cam2" value="cam2">View 1</button>
+    <button id="cam3" value="cam3">View 2</button>
+    <button id="cam4" value="cam4">View 3</button>
+
+    <section>
+        <div>
+            <button aria-label="up">↑</button>
+            <button aria-label="down">↓</button>
+            <button aria-label="left">←</button>
+            <button aria-label="right">→</button>
+            <button aria-label="get">GET</button>
+        </div>
+    </section>
+
+
+    <div class="scene">
+        <div class="floor"></div>
+
+        <article>
+            <div data-full-screen="front">Front</div>
+            <div data-full-screen="back">Back</div>
+            <div data-full-screen="right">Right</div>
+            <div data-full-screen="left">Left</div>
+            <div data-full-screen="top">top</div>
+
+            <div data-half-screen="front"></div>
+            <div data-half-screen="back"></div>
+            <div data-half-screen="right"></div>
+            <div data-half-screen="left"></div>
+            <output></output>
+        </article>
+
+        <article>
+            <div data-full-screen="front"></div>
+            <div data-full-screen="back"></div>
+            <div data-full-screen="right"></div>
+            <div data-full-screen="left"></div>
+            <div data-full-screen="top"></div>
+        </article>
+
     </div>
-</section>
-
-
-<div class="scene">
-<div class="floor"></div>
-
-<article>
-    <div class="face front">Front</div>
-    <div class="face back">Back</div>
-    <div class="face right">Right</div>
-    <div class="face left">Left</div>
-    <output></output>
-</article>
-</div>
 
 
 </body>

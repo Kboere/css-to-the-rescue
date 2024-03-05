@@ -5,7 +5,7 @@
 }
 
 :root {
-    --perspective: 1000px;
+    --perspective: 1250px;
 
     --camera-truck: 0px;
     --camera-pedestal: 0px;
@@ -112,7 +112,20 @@ body {
   }
 
   label:has(input:checked) ~ div:nth-of-type(1) > div {
-	background-color: dodgerblue;
+	/* background-color: dodgerblue; */
+	/* background-color: darkred;
+    background-image: radial-gradient(circle, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #8000ff, #ff00ff);
+    background-size: 600% 600%; */
+    animation: rainbow 2s ease infinite; 
+  }
+
+  @keyframes rainbow {
+    0% { background-color: red; }
+    20% { background-color: orange; }
+    40% { background-color: yellow; }
+    60% { background-color: green; }
+    80% { background-color: blue; }
+    100% { background-color: violet; }
   }
 
 
@@ -127,27 +140,28 @@ body > button:nth-of-type(2){
   right: 50px;
 }
 
-body > button:nth-of-type(1):active ~ .scene {
-    --camera-dolly: 0px;
-    --camera-pedestal: 250px;
-    --camera-truck: -1200px;
-    --camera-pan: 80deg;
-    --camera-roll: -15deg;
+body > button:nth-of-type(1):active ~ div:nth-of-type(1) {
+    --camera-dolly: -70px;
+    /* --camera-pedestal: 80px; */
+    --camera-truck: -910px;
+    --camera-pan: 83deg;
+	--camera-tilt: 0deg;
+    --camera-roll: 2deg;
   }
 
-body > button:nth-of-type(2):active ~ .scene {
-    --camera-dolly: 100px;
-    --camera-pedestal: 1000px;
+body > button:nth-of-type(2):active ~ div:nth-of-type(1) {
+    --camera-dolly: -580px;
+    --camera-pedestal: 500px;
     --camera-tilt: 0deg;
-    --camera-roll: -100deg;
+    --camera-roll: -40deg;
   }
 
-body > button:nth-of-type(3):active ~ .scene {
-    --camera-dolly: -500px;
-    --camera-truck: 500px;
-    --camera-pan: -45deg;
-    --camera-tilt: -10deg;
-    --camera-roll: -10deg;
+body > button:nth-of-type(3):active ~ div:nth-of-type(1) {
+    --camera-dolly: -70px;
+    --camera-truck: 910px;
+    --camera-pan: -90deg;
+    --camera-tilt: 0deg;
+    --camera-roll: 2deg;
   }
 
 body > button {
@@ -188,8 +202,8 @@ div:nth-of-type(1) > div {
 
 /*  the box */
 article {
-	--size-article: 16em;
-	--size-output: 3em;
+	--size-article: 10em;
+	--size-output: 2em;
 
 	/* max distance to the left or to the top */
 	--distance-max: calc(var(--size-article) - var(--size-output));
@@ -202,42 +216,90 @@ article {
 	display: grid;
 	place-items: start start;
 	transform-style: preserve-3d;
-	animation: spin 5s infinite linear paused;
 }
 
-article:hover {
-	animation-play-state: running;
+div:nth-of-type(1) article div:nth-of-type(-n+5) {
+    position: absolute;
+    width: var(--size-article);
+    height: var(--size-article);
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 8px solid dodgerblue;
+
+	--translate-box: 5em;
 }
 
-.face {
-	position: absolute;
-	width: var(--size-article);
-	height: 16em;
-	left: 0;
-	background-color: rgba(255, 255, 255, 0.2);
-	border: 1px solid #878787;
+div:nth-of-type(1) article div[data-full-screen="front"] {
+	transform: translateZ(var(--translate-box));
 }
 
-.front {
-	transform: translateZ(8em);
+div:nth-of-type(1) article div[data-full-screen="back"] {
+	transform: rotateY(180deg) translateZ(var(--translate-box));
 }
 
-.back {
-	transform: rotateY(180deg) translateZ(8em);
+div:nth-of-type(1) article div[data-full-screen="right"] {
+	transform: rotateY(90deg) translateZ(var(--translate-box));
 }
 
-.right {
-	transform: rotateY(90deg) translateZ(8em);
+div:nth-of-type(1) article div[data-full-screen="left"] {
+	transform: rotateY(-90deg) translateZ(var(--translate-box));
 }
 
-.left {
-	transform: rotateY(-90deg) translateZ(8em);
+div:nth-of-type(1) article div[data-full-screen="top"] {
+    transform: rotateX(90deg) translateZ(var(--translate-box));
 }
 
-@keyframes spin {
-	100% {
-		transform: rotateY(360deg);
-	}
+div:nth-of-type(1) article div:nth-of-type(n+6) {
+    position: absolute;
+    width: calc(var(--size-article) - 12px);
+    height: calc(var(--size-article) / 3 - 6px);
+    background-color: rgba(255, 255, 255, 0.1);
+     bottom: 6px;
+    left: 6px; 
+	--translate-box: 5em;
+}
+
+div:nth-of-type(1) article div[data-half-screen="front"] {
+	transform: translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article div[data-half-screen="back"] {
+	transform: rotateY(180deg) translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article div[data-half-screen="right"] {
+	transform: rotateY(90deg) translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article div[data-half-screen="left"] {
+	transform: rotateY(-90deg) translateZ(var(--translate-box));
+}
+
+/* grabmachine bottom part */
+div:nth-of-type(1) article:nth-of-type(2) div {
+    position: absolute;
+    width: var(--size-article);
+    height: var(--size-article);
+    left: 0;
+    background-color: dodgerblue;
+
+	--translate-box: 5em;
+}
+
+div:nth-of-type(1) article:nth-of-type(2) div[data-full-screen="front"] {
+	transform: translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article:nth-of-type(2) div[data-full-screen="back"] {
+	transform: rotateY(180deg) translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article:nth-of-type(2) div[data-full-screen="right"] {
+	transform: rotateY(90deg) translateZ(var(--translate-box));
+}
+
+div:nth-of-type(1) article:nth-of-type(2) div[data-full-screen="left"] {
+	transform: rotateY(-90deg) translateZ(var(--translate-box));
 }
 
 /* output */
@@ -269,26 +331,26 @@ article:hover {
 @keyframes up {
 	to {
 		/* --up:5; */
-		transform: translateZ(-8em);
+		transform: translateZ(-5em);
 	}
 }
 
 @keyframes left {
 	to {
-		--left: 5;
+		--left: 1;
 	}
 }
 
 @keyframes right {
 	to {
-		--right: 5;
+		--right: 1;
 	}
 }
 
 @keyframes down {
 	to {
 		/* -down:5; */
-		transform: translateZ(8em);
+		transform: translateZ(5em);
 	}
 }
 
@@ -345,88 +407,90 @@ section:nth-of-type(1):has(button:nth-of-type(4):active) ~ div:nth-of-type(1) ar
 }
 
 section:nth-of-type(1) {
-    position: absolute;
+    position: fixed;
     display: flex;
-    background: dodgerblue;
+    background-color: #1e90ff;
+	/* clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); */
     padding: 20px;
-    border-radius: 10px;
-    left: 2em;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
     z-index: 99999;
 }
 
+
+section:nth-of-type(1)::before,
+section:nth-of-type(1)::after {
+    content: "";
+    position: absolute;
+    width: 2em;
+    height: 100%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: #4188CE;
+}
+section:nth-of-type(1)::before {
+    left: -0.98em;
+    top: 0;
+}
+section:nth-of-type(1)::after {
+    right: -0.98em;
+    top: 0;
+	transform: scaleX(-1);
+}
+
 section:nth-of-type(1) div {
-		display: grid;
-		grid-template-areas:
-			". up ."
-			"left . right"
-			". down .";
-		/* width: 6rem; */
-		/* height: 6rem; */
-		display: grid;
-		/* grid-gap: 0.5rem; */
-		/* grid-template-columns: 45fr 60fr 45fr; */
-		/* grid-template-rows: 45fr 60fr 45fr; */
-		transition: 0.1s;
-  transform-style: unset;
-	}
+    display: flex;
+    transition: 0.1s;
+    transform-style: unset;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    top: -0.2em;
+    position: relative;
+}
 
 section:nth-of-type(1) div button {
-	color: #fff;
-	background: rgb(55, 50, 50);
-	border: none;
-	position: relative;
-	cursor: pointer;
-
-	clip-path: polygon(0 15%, 62% 15%, 100% 50%, 62% 85%, 0 85%);
-	width: 3em;
-	height: 3em;
-  transform-style: unset;
-  z-index: 99999;
+    color: #fff;
+    background: #D3E1FF;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5em;
+    width: 5em;
+    height: 5em;
+    transform-style: unset;
+    margin-right: 0.5em;
+    font-size: 1em;
+	color: #000;
+	transition: .3s;
+}
+section:nth-of-type(1) div button:after {
+	content: "";
+	position: absolute;
+	width: 5em;
+    height: 5em;
+	bottom: -0.6em;
+	background: #A4B5E3;
+	border-radius: 5em;
+	left: 0;
+	z-index: -1;
+	transition: .3s;
 }
 
-section:nth-of-type(1) div button:hover,
-section:nth-of-type(1) div button:hover:before,
-section:nth-of-type(1) div button:focus-visible,
-section:nth-of-type(1) div button:focus-visible:before {
-	background-color: rgb(85, 55, 55);
-	outline: none;
+section:nth-of-type(1) div button:last-child{
+	background: #FFBFBF;
+}
+section:nth-of-type(1) div button:last-child:after {
+	background: #D06464;
 }
 
-section:nth-of-type(1) div button:nth-of-type(1) {
-	grid-area: up;
-	border-radius: 0.5rem 0.5rem 0 0;
-	transform: rotate(90deg);
+section:nth-of-type(1) div button:active{
+	box-shadow:inset .2em .2em .2em #0009;
+	transition: .3s;
 }
 
-section:nth-of-type(1) div button:nth-of-type(2) {
-	grid-area: left;
-	border-radius: 0.5rem 0 0 0.5rem;
-}
-
-section:nth-of-type(1) div button:nth-of-type(3) {
-	grid-area: right;
-	border-radius: 0 0.5rem 0.5rem 0;
-	transform: rotate(180deg);
-}
-
-section:nth-of-type(1) div button:nth-of-type(4) {
-	grid-area: down;
-	border-radius: 0 0 0.5rem 0.5rem;
-	transform: rotate(-90deg);
-}
-
-div:has(button:nth-of-type(1):active) {
-	transform: perspective(50em) ;
-}
-
-div:has(button:nth-of-type(2):active) {
-	transform: perspective(50em);
-}
-
-div:has(button:nth-of-type(3):active) {
-	transform: perspective(50em);
-}
-
-div:has(button:nth-of-type(4):active) {
-	transform: perspective(50em);
+section:nth-of-type(1) div button:active:after {
+	bottom: 0em;
 }
