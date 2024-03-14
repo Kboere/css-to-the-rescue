@@ -43,7 +43,7 @@ body {
 /*-------------------------*/
 /* Switch button (party-mode) */
 /*-------------------------*/
-  label{
+body > label{
     position: absolute;
 	left: 0;
 	top: 0;
@@ -51,18 +51,18 @@ body {
     width: fit-content;
     z-index: 99999;
 }
-label::before{
+body > label::before{
     content: "";
     position: absolute;
     display: block;
     width: 10px;
     height: 40px;
-    top: 50%;
+    top: 51%;
     transform: translateY(-50%);
     background: #f2f2f2;
   border-radius: 0 5px 5px 0;
 }
- label input {
+body > label input {
     cursor: pointer;
     display: block;
     outline: transparent;
@@ -73,7 +73,7 @@ label::before{
     -webkit-appearance: none;
     appearance: none;
 }
-label input:before {
+body > label input:before {
   background-color: hsl(var(--hue), 10%, 90%);
   border-radius: 0.0625em;
   box-shadow: -0.0625em 0 0 white inset, 0 0 0 hsl(var(--hue), 10%, 80%) inset;
@@ -84,7 +84,7 @@ label input:before {
   transform: translate(0%, -50%) rotate(-25deg);
   transform-origin: center left;
 }
-   label input:after {
+body > label input:after {
     background-color: hsl(var(--hue-center), 70%, 30%);
     border-radius: 50%;
     box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset, 0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset, -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
@@ -93,24 +93,24 @@ label input:before {
     width: 30px;
     height: 30px;
 }
-   label input:checked:before {
+body > label input:checked:before {
     transform: rotate(25deg) translateX(4px);
 }
-   label input:checked:after {
+body > label input:checked:after {
     transform: translateY(4.3em);
 }
-   label input:focus-visible {
+body > label input:focus-visible {
     box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset, 0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
   }
-   label input:before, 
-   label input:after {
+body > label input:before, 
+body > label input:after {
     content: "";
     display: block;
     position: absolute;
     transition: 
     box-shadow var(--trans-dur) var(--trans-timing), 
     transform var(--trans-dur) var(--trans-timing);
-  }
+}
 
 
 /*-------------------------*/
@@ -139,6 +139,7 @@ section:nth-of-type(1) label input {
   border-radius: 50%;
   left: -40px;
   top: 10px;
+  appearance: none;
 }
 
 section:nth-of-type(1) label input::before {
@@ -205,10 +206,10 @@ section:nth-of-type(1) button:nth-of-type(1){
 }
 
 section:nth-of-type(1):has(button:nth-of-type(1):active) ~ section:nth-of-type(3) {
-    --camera-dolly: 0;
+    --camera-dolly: 170px;
     --camera-pedestal: 0px;
     --camera-truck: -1000px;
-    --camera-pan: 90deg;
+    --camera-pan: 100deg;
 	--camera-tilt: 0deg;
     --camera-roll: 0deg;
   }
@@ -221,10 +222,10 @@ section:nth-of-type(1):has(button:nth-of-type(1):active) ~ section:nth-of-type(3
   }
 
   section:nth-of-type(1):has(button:nth-of-type(3):active) ~ section:nth-of-type(3) {
-    --camera-dolly: 0;
+    --camera-dolly: 170px;
 	--camera-pedestal: 0px;
     --camera-truck: 1000px;
-    --camera-pan: -90deg;
+    --camera-pan: -100deg;
     --camera-tilt: 0deg;
     --camera-roll: 0deg;
   }
@@ -312,6 +313,8 @@ article {
 	--size-output: 2em;
   --translate-box: 5em;
 
+  --max-movement: 8em;
+
 	width: var(--size-article);
 	aspect-ratio: 1;
 	transform-style: preserve-3d;
@@ -328,7 +331,6 @@ section:nth-of-type(3) article span output {
 section:nth-of-type(3) article span {
   width: 100%;
   height: 100%;
-  /* background-color: #ff06; */
   display: block;
   transform: translateZ(var(--translate-box));
 }
@@ -336,9 +338,166 @@ section:nth-of-type(3) article span {
 section:nth-of-type(3) article span output {
   width: var(--size-output);
   height: var(--size-article);
-  background-color: gold;
   display: block;
 }
+
+/* start of small box with attached rope */
+section:nth-of-type(3) article span output article:first-of-type{
+  width: var(--size-output);
+  height: calc(var(--size-output) / 2);
+  position: relative;
+}
+
+section:nth-of-type(3) article span output article:first-of-type span {
+  width: var(--size-output);
+  height: var(--size-output);
+  z-index: -1;
+  position: absolute;
+  transform-style: preserve-3d;
+  background-color: silver;
+}
+section:nth-of-type(3) article span output article:first-of-type span:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+}
+
+section:nth-of-type(3) article span output article:first-of-type span:first-of-type{
+  transform: rotateX(90deg) translate3d(0, -1em, 1em);
+  background-color: darkgray;
+}
+section:nth-of-type(3) article span output article:first-of-type span:first-of-type::after{
+  transform: rotateY(0deg) translateZ(-1em);
+  background-color: darkgray;
+}
+
+section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(2) {
+  transform: rotateY(90deg) translate3d(1em, 0, -1em);
+  height: calc(var(--size-output) / 2);
+}
+section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(2)::after{
+  transform: rotateY(0deg) translateZ(2em);
+}
+
+section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(3) {
+  transform: rotateX(0deg) translate3d(0, 0, -2em);
+  height: calc(var(--size-output) / 2);
+}
+section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(3)::after{
+  transform: rotateY(0deg) translateZ(2em);
+}
+/* end of small box */
+
+/* start of rope attached to box */
+section:nth-of-type(3) article span output article:nth-of-type(2){
+  position: relative;
+  height: 0.5em;
+  transform-style: preserve-3d;
+  animation: ropeMove 4s linear paused;
+}
+section:nth-of-type(3) article span output article:nth-of-type(2) span{
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #fff;
+  transform: translate3d(15px, 0, -1em);
+  
+}
+
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(2){
+  animation-play-state: running;
+}
+
+@keyframes ropeMove{
+  0% {height: 0.5em;}
+  50% {height: 6em;}
+  60% {height: 6em;}
+  100% {height: 0.5em;}
+}
+/* end of rope attached to box */
+
+/* start of grabbler */
+section:nth-of-type(3) article span output article:nth-of-type(3){
+  position: relative;
+  width: max-content;
+  height: max-content;
+  transform-style: preserve-3d;
+}
+
+section:nth-of-type(3) article span output article:nth-of-type(3) div{
+  border: none;
+    position: relative;
+    background-color: inherit;
+    width: 1em;
+    height: 1em;
+}
+
+section:nth-of-type(3) article span output article:nth-of-type(3) div:first-of-type{
+  left: 0.5em;
+}
+
+section:nth-of-type(3) article span output article:nth-of-type(3) div:first-of-type span:first-of-type{
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: silver;
+  clip-path: polygon(40% 0%, 60% 0%, 100% 45%, 50% 100%, 0% 45%);
+  transform: translate3d(0, -3px, -1em);
+}
+/* end of grabbler */
+
+/* start of hooks of grabbler */
+section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2){
+  position: relative;
+  width: 1em;
+  height: 1em;
+  left: 0.55em;
+  transform: translate3d(0, -0.5em, -1em);
+  /* background-color: red; */
+}
+section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type{
+  position: absolute;
+  transform: none;
+  background-color: silver;
+  clip-path: polygon(40% 91%, 34% 100%, 0 83%, 0 50%, 38% 0, 50% 0, 10% 53%, 10% 75%);
+  animation: hookLeft 4s linear paused;
+  transform-origin: top center;
+}
+section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
+  position: absolute;
+  transform: none;
+  background-color: silver;
+  clip-path: polygon(54% 91%, 59% 100%, 100% 83%, 100% 50%, 66% 0, 50% 0, 87% 53%, 86% 73%);
+  animation: hookRight 4s linear paused;
+  transform-origin: top center;
+}
+
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type,
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
+  animation-play-state: running;
+}
+
+@keyframes hookLeft{
+  0%{transform: rotateZ(0deg);}
+  20%{transform: rotateZ(40deg);}
+  43%{transform: rotateZ(40deg);}
+  50%{transform: rotateZ(0deg);}
+  100%{transform: rotateZ(0deg);}
+}
+
+@keyframes hookRight{
+  0%{transform: rotateZ(0deg);}
+  20%{transform: rotateZ(-40deg);}
+  43%{transform: rotateZ(-40deg);}
+  50%{transform: rotateZ(0deg);}
+  100%{transform: rotateZ(0deg);}
+}
+
+
+/* end of hooks of grabbler */
+
 
 /* grijpmachine box bovenkant */
 section:nth-of-type(3) article div:nth-of-type(-n+5) {
@@ -348,6 +507,7 @@ section:nth-of-type(3) article div:nth-of-type(-n+5) {
     left: 0;
     background-color: rgba(255, 255, 255, 0.07);
     border: 8px solid dodgerblue;
+    z-index: 999999;
 }
 
 section:nth-of-type(3) article div[data-full-screen="front"] {
@@ -461,7 +621,7 @@ section:nth-of-type(2):has(button:active) ~ section:nth-of-type(3) article span 
 
 /* x beweegt de maat van de machine naar achteren */
 section:nth-of-type(2):has(button:nth-of-type(1):active) ~ section:nth-of-type(3) article span {
-  translate: 0 0 calc(var(--size-article) * -1);
+  translate: 0 0 calc(var(--max-movement) / 2 * -1);
 }
 
 /* z beweegt weer helemaal naar voren */
