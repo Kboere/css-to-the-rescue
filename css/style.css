@@ -28,7 +28,7 @@ body {
   font-family: sans-serif;
   background-color: #000;
   color: #fff;
-  height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   perspective: var(--perspective);
