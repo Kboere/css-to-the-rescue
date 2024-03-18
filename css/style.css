@@ -395,7 +395,6 @@ section:nth-of-type(3) article span output article:nth-of-type(2){
   position: relative;
   height: 0.5em;
   transform-style: preserve-3d;
-  animation: ropeMove 4s linear paused;
 }
 section:nth-of-type(3) article span output article:nth-of-type(2) span{
   position: absolute;
@@ -407,7 +406,7 @@ section:nth-of-type(3) article span output article:nth-of-type(2) span{
 }
 
 section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(2){
-  animation-play-state: running;
+  animation: ropeMove 4s linear;
 }
 
 @keyframes ropeMove{
@@ -462,7 +461,7 @@ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-typ
   transform: none;
   background-color: silver;
   clip-path: polygon(40% 91%, 34% 100%, 0 83%, 0 50%, 38% 0, 50% 0, 10% 53%, 10% 75%);
-  animation: hookLeft 4s linear paused;
+  /* animation: hookLeft 4s linear paused; */
   transform-origin: top center;
 }
 section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
@@ -470,13 +469,15 @@ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-typ
   transform: none;
   background-color: silver;
   clip-path: polygon(54% 91%, 59% 100%, 100% 83%, 100% 50%, 66% 0, 50% 0, 87% 53%, 86% 73%);
-  animation: hookRight 4s linear paused;
+  /* animation: hookRight 4s linear paused; */
   transform-origin: top center;
 }
 
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type,
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type{
+  animation: hookLeft 4s linear;
+}
 section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
-  animation-play-state: running;
+  animation: hookRight 4s linear;
 }
 
 @keyframes hookLeft{
