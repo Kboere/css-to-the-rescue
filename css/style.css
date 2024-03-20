@@ -2,13 +2,11 @@
 *::before,
 *::after {
   padding: 0;
-  /* margin: 0 auto; */
   box-sizing: border-box;
 }
 
 :root {
   --perspective: 1250px;
-
   --camera-truck: 0px;
   --camera-pedestal: 0px;
   --camera-dolly: -1000px;
@@ -20,10 +18,10 @@
   --hue-center: 18;
   --hue-off: 3;
   --hue-on: 133;
-  --bg: hsl(var(--hue), 90%, 85%);
-  --fg: hsl(var(--hue), 90%, 10%);
   --trans-dur: 0.3s;
   --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --primaire-color: dodgerblue;
 }
 
 body {
@@ -45,76 +43,85 @@ body {
 /*-------------------------*/
 /* Switch button (party-mode) */
 /*-------------------------*/
-body > label {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  width: fit-content;
-  z-index: 99999;
-}
-body > label::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 10px;
-  height: 40px;
-  top: 51%;
-  transform: translateY(-50%);
-  background: #f2f2f2;
-  border-radius: 0 5px 5px 0;
-}
-body > label input {
-  cursor: pointer;
-  display: block;
-  outline: transparent;
-  position: relative;
-  width: 75px;
-  height: 150px;
-  transition: background-color var(--trans-dur),
-    box-shadow calc(var(--trans-dur) / 2);
-  -webkit-appearance: none;
-  appearance: none;
-}
-body > label input:before {
-  background-color: hsl(var(--hue), 10%, 90%);
-  border-radius: 0.0625em;
-  box-shadow: -0.0625em 0 0 white inset, 0 0 0 hsl(var(--hue), 10%, 80%) inset;
-  top: 50%;
-  left: 0;
-  width: calc(100% - 5px);
-  height: 10px;
-  transform: translate(0%, -50%) rotate(-25deg);
-  transform-origin: center left;
-}
-body > label input:after {
-  background-color: hsl(var(--hue-center), 70%, 30%);
-  border-radius: 50%;
-  box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset,
-    0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset,
-    -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
-  top: 2.5em;
-  right: 0;
-  width: 30px;
-  height: 30px;
-}
-body > label input:checked:before {
-  transform: rotate(25deg) translateX(4px);
-}
-body > label input:checked:after {
-  transform: translateY(4.3em);
-}
-body > label input:focus-visible {
-  box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset,
-    0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
-}
-body > label input:before,
-body > label input:after {
-  content: "";
-  display: block;
-  position: absolute;
-  transition: box-shadow var(--trans-dur) var(--trans-timing),
-    transform var(--trans-dur) var(--trans-timing);
+body{
+  > label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: fit-content;
+    z-index: 99999;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 10px;
+      height: 40px;
+      top: 51%;
+      transform: translateY(-50%);
+      background: #f2f2f2;
+      border-radius: 0 5px 5px 0;
+    }
+
+    & input {
+       cursor: pointer;
+       display: block;
+       outline: transparent;
+       position: relative;
+       width: 75px;
+       height: 150px;
+       transition: background-color var(--trans-dur),
+        box-shadow calc(var(--trans-dur) / 2);
+       -webkit-appearance: none;
+       appearance: none;
+
+       &::before, &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        transition: box-shadow var(--trans-dur) var(--trans-timing),
+        transform var(--trans-dur) var(--trans-timing);
+      }
+
+       &::before {
+        background-color: hsl(var(--hue), 10%, 90%);
+        border-radius: 0.0625em;
+        box-shadow: -0.0625em 0 0 white inset, 0 0 0 hsl(var(--hue), 10%, 80%) inset;
+        top: 50%;
+        left: 0;
+        width: calc(100% - 5px);
+        height: 10px;
+        transform: translate(0%, -50%) rotate(-25deg);
+        transform-origin: center left;
+      }
+
+      &::after {
+        background-color: hsl(var(--hue-center), 70%, 30%);
+        border-radius: 50%;
+        box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset,
+          0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset,
+          -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
+        top: 2.5em;
+        right: 0;
+        width: 30px;
+        height: 30px;
+      }
+
+      &:checked::before {
+        transform: rotate(25deg) translateX(4px);
+      }
+
+      &:checked::after {
+        transform: translateY(4.3em);
+      }
+
+      &:focus-visible {
+        box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset,
+          0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
+      }
+    }
+  }
 }
 
 /*-------------------------*/
@@ -133,79 +140,80 @@ section:nth-of-type(1) {
   padding: 20px;
   border-radius: 10px 0px 0px 10px;
   transition: 1s ease;
-}
 
-section:nth-of-type(1) label,
-section:nth-of-type(1) label input {
-  position: absolute;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  left: -40px;
-  top: 10px;
-  appearance: none;
-}
+  & label, & label input {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    left: -40px;
+    top: 10px;
+    appearance: none;
+  }
 
-section:nth-of-type(1) label input::before {
-  content: "❏";
-  display: block;
-  transition: none;
-  transform: none;
-  border-radius: 50%;
-  background: #f2f2f2;
-  height: 40px;
-  width: 40px;
-  top: 0;
-  text-align: center;
-  line-height: 40px;
-  font-size: 2em;
-  color: dodgerblue;
-}
+  & label::before, & label input::after {
+    display: none;
+  }
 
-section:nth-of-type(1) label input:hover::before,
-section:nth-of-type(1) label input:focus-visible::before {
-  background: dodgerblue;
-  color: #fff;
-  cursor: pointer;
-}
+  & label input:hover::before, & label input:focus-visible::before {
+    background: var(--primaire-color);
+    color: #fff;
+    cursor: pointer;
+  }
 
-section:nth-of-type(1) label::before,
-section:nth-of-type(1) label input::after {
-  display: none;
+  & label{
+    & input{
+
+      &::before {
+        content: "❏";
+        display: block;
+        transition: none;
+        transform: none;
+        border-radius: 50%;
+        background: #f2f2f2;
+        height: 40px;
+        width: 40px;
+        top: 0;
+        text-align: center;
+        line-height: 40px;
+        font-size: 2em;
+        color: var(--primaire-color);
+      }
+    }
+  }
+
+  & button {
+    background: #fff;
+    border: none;
+    border-radius: 1em;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    color: #000;
+    padding: 1em;
+    align-items: center;
+
+    & svg {
+      width: 40px;
+      fill: darkgray;
+    }
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+
+    &:focus-visible, &:focus-visible svg, &:hover, &:hover svg {
+      background: var(--primaire-color);
+      color: #fff;
+      fill: #fff;
+      cursor: pointer;
+    }
+  }
 }
 
 section:nth-of-type(1):has(input:checked) {
   right: 0;
-}
-
-section:nth-of-type(1) button {
-  background: #fff;
-  border: none;
-  border-radius: 1em;
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  color: #000;
-  padding: 1em;
-  align-items: center;
-}
-section:nth-of-type(1) button:focus-visible,
-section:nth-of-type(1) button:focus-visible svg,
-section:nth-of-type(1) button:hover,
-section:nth-of-type(1) button:hover svg {
-  background: dodgerblue;
-  color: #fff;
-  fill: #fff;
-  cursor: pointer;
-}
-section:nth-of-type(1) button svg {
-  width: 40px;
-  fill: darkgray;
-}
-
-section:nth-of-type(1) button:nth-of-type(1) {
-  margin-top: 0;
 }
 
 section:nth-of-type(1):has(button:nth-of-type(1):active)
@@ -372,58 +380,26 @@ section:nth-of-type(4) article span output article:first-of-type span:after {
   background-color: silver;
 }
 
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:first-of-type {
+section:nth-of-type(4) article span output article:first-of-type span:first-of-type {
   transform: rotateX(90deg) translate3d(0, -1em, 1em);
   background-color: darkgray;
 }
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:first-of-type::after {
+section:nth-of-type(4) article span output article:first-of-type span:first-of-type::after {
   transform: rotateY(0deg) translateZ(-1em);
   background-color: darkgray;
 }
-
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:nth-of-type(2) {
+section:nth-of-type(4) article span output article:first-of-type span:nth-of-type(2) {
   transform: rotateY(90deg) translate3d(1em, 0, -1em);
   height: calc(var(--size-output) / 2);
 }
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:nth-of-type(2)::after {
+section:nth-of-type(4) article span output article:first-of-type span:nth-of-type(2)::after {
   transform: rotateY(0deg) translateZ(2em);
 }
-
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:nth-of-type(3) {
+section:nth-of-type(4) article span output article:first-of-type span:nth-of-type(3) {
   transform: rotateX(0deg) translate3d(0, 0, -2em);
   height: calc(var(--size-output) / 2);
 }
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:first-of-type
-  span:nth-of-type(3)::after {
+section:nth-of-type(4) article span output article:first-of-type span:nth-of-type(3)::after {
   transform: rotateY(0deg) translateZ(2em);
 }
 /* end of small box */
@@ -442,12 +418,7 @@ section:nth-of-type(4) article span output article:nth-of-type(2) span {
   transform: translate3d(15px, 0, -1em);
 }
 
-section:nth-of-type(2):has(input:checked)
-  ~ section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(2) {
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article span output article:nth-of-type(2) {
   animation: ropeMove 4s linear;
 }
 
@@ -483,22 +454,11 @@ section:nth-of-type(4) article span output article:nth-of-type(3) div {
   height: 1em;
 }
 
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:first-of-type {
+section:nth-of-type(4) article span output article:nth-of-type(3) div:first-of-type {
   left: 0.5em;
 }
 
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:first-of-type
-  span:first-of-type {
+section:nth-of-type(4) article span output article:nth-of-type(3) div:first-of-type span:first-of-type {
   position: absolute;
   width: 1em;
   height: 1em;
@@ -509,12 +469,7 @@ section:nth-of-type(4)
 /* end of grabbler */
 
 /* start of hooks of grabbler */
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:nth-of-type(2) {
+section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) {
   position: relative;
   width: 1em;
   height: 1em;
@@ -522,13 +477,7 @@ section:nth-of-type(4)
   transform: translate3d(0, -0.5em, -1em);
   /* background-color: red; */
 }
-section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:nth-of-type(2)
-  span:first-of-type {
+section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type {
   position: absolute;
   transform: none;
   background-color: silver;
@@ -563,24 +512,10 @@ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-typ
   transform-origin: top center;
 }
 
-section:nth-of-type(2):has(input:checked)
-  ~ section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:nth-of-type(2)
-  span:first-of-type {
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type {
   animation: hookLeft 4s linear;
 }
-section:nth-of-type(2):has(input:checked)
-  ~ section:nth-of-type(4)
-  article
-  span
-  output
-  article:nth-of-type(3)
-  div:nth-of-type(2)
-  span:nth-of-type(2) {
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2) {
   animation: hookRight 4s linear;
 }
 
@@ -631,7 +566,7 @@ section:nth-of-type(4) {
       height: var(--size-article);
       left: 0;
       background-color: rgba(255, 255, 255, 0.07);
-      border: 8px solid dodgerblue;
+      border: 8px solid var(--primaire-color);
       z-index: 999999;
     }
 
@@ -696,7 +631,7 @@ section:nth-of-type(4) {
           margin-left: 1em;
           color: silver;
           animation: 5s title infinite linear;
-          filter: drop-shadow(0 0 0.5em dodgerblue);
+          filter: drop-shadow(0 0 0.5em var(--primaire-color));
         }
       }
 
@@ -758,7 +693,7 @@ section:nth-of-type(4) {
       width: var(--size-article);
       height: var(--size-article);
       left: 0;
-      background-color: dodgerblue;
+      background-color: var(--primaire-color);
       border: none;
 
       --translate-box: 5em;
@@ -1016,9 +951,6 @@ section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article:first
   }
 }
 
-
-
-
 /*-------------------------*/
 /* Buttons that handle the movement */
 /*-------------------------*/
@@ -1031,7 +963,7 @@ section:nth-of-type(2) {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #1e90ff;
+  background-color: var(--primaire-color);
   padding: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -1231,7 +1163,6 @@ section:nth-of-type(2):has(input:checked) ~ dialog {
     transform: scale(1);
   }
 }
-
 
 /*-------------------------*/
 /* Discoball partymode */
