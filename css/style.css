@@ -218,15 +218,15 @@ section:nth-of-type(1):has(button:nth-of-type(1):active)
   --camera-roll: 0deg;
 }
 
-/* section:nth-of-type(1):has(button:nth-of-type(2):active)
+section:nth-of-type(1):has(button:nth-of-type(2):active)
   ~ section:nth-of-type(4) {
   --camera-dolly: -580px;
   --camera-pedestal: 500px;
   --camera-tilt: 0deg;
   --camera-roll: -40deg;
-} */
+}
 
-section:nth-of-type(1):has(button:nth-of-type(2):active)
+section:nth-of-type(1):has(button:nth-of-type(3):active)
   ~ section:nth-of-type(4) {
   --camera-dolly: 170px;
   --camera-pedestal: 0px;
@@ -246,7 +246,7 @@ section:nth-of-type(4) > div {
   width: 1600px;
   height: 1600px;
   transform: translate(-50%, -50%) rotateX(90deg) translateZ(-180px);
-  background-color: rgb(0, 139, 86);
+  background-color: rgb(35 35 35 / 73%);
   background-image: radial-gradient(#000a, #0000, #000 60%),
     repeating-linear-gradient(#fff5 0 2px, #fff0 0 90px),
     repeating-linear-gradient(90deg, #fff5 0 2px, #fff0 0 90px);
@@ -713,12 +713,11 @@ section:nth-of-type(4) {
         height: 4em;
         left: 1em;
         bottom: 2em;
-        background: dodgerblue;
+        background: #fff;
         transform: none;
         border-radius: 2px;
         overflow: hidden;
-
-        /* diagonal line across the box */
+        
         & span:first-of-type, & span:nth-of-type(2){
           position: absolute;
           width: 100%;
@@ -726,7 +725,7 @@ section:nth-of-type(4) {
           top: 1em;
           left: -1em;
           clip-path: polygon(15% 50%, 85% 50%, 100% 100%, 0 100%);
-          background-color: rgb(32, 124, 216);
+          background-color: #f2f2f2;
           transform: rotate(90deg);
           
         }
@@ -746,7 +745,7 @@ section:nth-of-type(4) {
           z-index: 1;
           transform: rotate(180deg);
           clip-path: polygon(25% 50%, 75% 50%, 100% 100%, 0 100%);
-          background-color: black;
+          background-color: #d7d7d7;
         }
 
         &::after{
@@ -758,7 +757,7 @@ section:nth-of-type(4) {
           bottom: 0;
           border-radius: unset;
           clip-path: polygon(25% 60%, 75% 60%, 100% 100%, 0 100%);
-          background-color: rgb(49, 66, 87);
+          background-color: #d7d7d7;
         }
       }
 
@@ -766,7 +765,7 @@ section:nth-of-type(4) {
         & span {
           --color-controls-c1: rgb(26, 121, 217);
           --color-controls-c2: rgb(31, 100, 168);
-          --lever-color: greenyellow;
+          --lever-color: #b93535;
 
           --triangle-sides: polygon(50% 0%, 0% 100%, 100% 100%);
 
@@ -839,7 +838,7 @@ section:nth-of-type(4) {
               position: absolute;
               width: 2em;
               height: 1em;
-              background-color: var(--color-controls-c1);
+              background-color: rgb(0 128 71);
               transform: translateX(0.05em) translateY(0.05em) translateZ(0.05em);
               z-index: -1;
               border-radius: 2px;
@@ -894,7 +893,7 @@ section:nth-of-type(4) {
       position: absolute;
       width: 17px;
       height: 30px;
-      background-color: greenyellow;
+      background-color: silver;
     }
 
     & div::before, & div::after {
