@@ -1,27 +1,29 @@
-*, *::before, *::after {
-    padding: 0;
-    /* margin: 0 auto; */
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  padding: 0;
+  /* margin: 0 auto; */
+  box-sizing: border-box;
 }
 
 :root {
-    --perspective: 1250px;
+  --perspective: 1250px;
 
-    --camera-truck: 0px;
-    --camera-pedestal: 0px;
-    --camera-dolly: -1000px;
-    --camera-roll: 0deg;
-    --camera-pan: 0deg;
-    --camera-tilt: 0deg;
-  
-    --hue: 223;
-    --hue-center: 18;
-    --hue-off: 3;
-    --hue-on: 133;
-    --bg: hsl(var(--hue), 90%, 85%);
-    --fg: hsl(var(--hue), 90%, 10%);
-    --trans-dur: 0.3s;
-    --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
+  --camera-truck: 0px;
+  --camera-pedestal: 0px;
+  --camera-dolly: -1000px;
+  --camera-roll: 0deg;
+  --camera-pan: 0deg;
+  --camera-tilt: 0deg;
+
+  --hue: 223;
+  --hue-center: 18;
+  --hue-off: 3;
+  --hue-on: 133;
+  --bg: hsl(var(--hue), 90%, 85%);
+  --fg: hsl(var(--hue), 90%, 10%);
+  --trans-dur: 0.3s;
+  --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 body {
@@ -34,7 +36,7 @@ body {
   perspective: var(--perspective);
   overflow: hidden;
   margin: 0;
-  
+
   *:not(:empty) {
     transform-style: preserve-3d;
   }
@@ -43,35 +45,36 @@ body {
 /*-------------------------*/
 /* Switch button (party-mode) */
 /*-------------------------*/
-body > label{
-    position: absolute;
-	left: 0;
-	top: 0;
-    display: block;
-    width: fit-content;
-    z-index: 99999;
+body > label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: fit-content;
+  z-index: 99999;
 }
-body > label::before{
-    content: "";
-    position: absolute;
-    display: block;
-    width: 10px;
-    height: 40px;
-    top: 51%;
-    transform: translateY(-50%);
-    background: #f2f2f2;
+body > label::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 40px;
+  top: 51%;
+  transform: translateY(-50%);
+  background: #f2f2f2;
   border-radius: 0 5px 5px 0;
 }
 body > label input {
-    cursor: pointer;
-    display: block;
-    outline: transparent;
-    position: relative;
-    width: 75px;
-    height: 150px;
-    transition: background-color var(--trans-dur), box-shadow calc(var(--trans-dur) / 2);
-    -webkit-appearance: none;
-    appearance: none;
+  cursor: pointer;
+  display: block;
+  outline: transparent;
+  position: relative;
+  width: 75px;
+  height: 150px;
+  transition: background-color var(--trans-dur),
+    box-shadow calc(var(--trans-dur) / 2);
+  -webkit-appearance: none;
+  appearance: none;
 }
 body > label input:before {
   background-color: hsl(var(--hue), 10%, 90%);
@@ -85,33 +88,34 @@ body > label input:before {
   transform-origin: center left;
 }
 body > label input:after {
-    background-color: hsl(var(--hue-center), 70%, 30%);
-    border-radius: 50%;
-    box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset, 0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset, -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
-    top: 2.5em;
-    right: 0;
-    width: 30px;
-    height: 30px;
+  background-color: hsl(var(--hue-center), 70%, 30%);
+  border-radius: 50%;
+  box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset,
+    0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset,
+    -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
+  top: 2.5em;
+  right: 0;
+  width: 30px;
+  height: 30px;
 }
 body > label input:checked:before {
-    transform: rotate(25deg) translateX(4px);
+  transform: rotate(25deg) translateX(4px);
 }
 body > label input:checked:after {
-    transform: translateY(4.3em);
+  transform: translateY(4.3em);
 }
 body > label input:focus-visible {
-    box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset, 0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
-  }
-body > label input:before, 
+  box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset,
+    0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
+}
+body > label input:before,
 body > label input:after {
-    content: "";
-    display: block;
-    position: absolute;
-    transition: 
-    box-shadow var(--trans-dur) var(--trans-timing), 
+  content: "";
+  display: block;
+  position: absolute;
+  transition: box-shadow var(--trans-dur) var(--trans-timing),
     transform var(--trans-dur) var(--trans-timing);
 }
-
 
 /*-------------------------*/
 /* buttons viewmodes */
@@ -159,18 +163,18 @@ section:nth-of-type(1) label input::before {
 }
 
 section:nth-of-type(1) label input:hover::before,
-section:nth-of-type(1) label input:focus-visible::before{
+section:nth-of-type(1) label input:focus-visible::before {
   background: dodgerblue;
   color: #fff;
   cursor: pointer;
 }
 
 section:nth-of-type(1) label::before,
-section:nth-of-type(1) label input::after{
+section:nth-of-type(1) label input::after {
   display: none;
 }
 
-section:nth-of-type(1):has(input:checked){
+section:nth-of-type(1):has(input:checked) {
   right: 0;
 }
 
@@ -185,12 +189,11 @@ section:nth-of-type(1) button {
   color: #000;
   padding: 1em;
   align-items: center;
-
 }
 section:nth-of-type(1) button:focus-visible,
 section:nth-of-type(1) button:focus-visible svg,
 section:nth-of-type(1) button:hover,
-section:nth-of-type(1) button:hover svg{
+section:nth-of-type(1) button:hover svg {
   background: dodgerblue;
   color: #fff;
   fill: #fff;
@@ -201,67 +204,82 @@ section:nth-of-type(1) button svg {
   fill: darkgray;
 }
 
-section:nth-of-type(1) button:nth-of-type(1){
+section:nth-of-type(1) button:nth-of-type(1) {
   margin-top: 0;
 }
 
-section:nth-of-type(1):has(button:nth-of-type(1):active) ~ section:nth-of-type(3) {
-    --camera-dolly: 170px;
-    --camera-pedestal: 0px;
-    --camera-truck: -1000px;
-    --camera-pan: 100deg;
-	--camera-tilt: 0deg;
-    --camera-roll: 0deg;
-  }
+section:nth-of-type(1):has(button:nth-of-type(1):active)
+  ~ section:nth-of-type(3) {
+  --camera-dolly: 170px;
+  --camera-pedestal: 0px;
+  --camera-truck: -1000px;
+  --camera-pan: 100deg;
+  --camera-tilt: 0deg;
+  --camera-roll: 0deg;
+}
 
-  section:nth-of-type(1):has(button:nth-of-type(2):active) ~ section:nth-of-type(3) {
-    --camera-dolly: -580px;
-    --camera-pedestal: 500px;
-    --camera-tilt: 0deg;
-    --camera-roll: -40deg;
-  }
+/* section:nth-of-type(1):has(button:nth-of-type(2):active)
+  ~ section:nth-of-type(3) {
+  --camera-dolly: -580px;
+  --camera-pedestal: 500px;
+  --camera-tilt: 0deg;
+  --camera-roll: -40deg;
+} */
 
-  section:nth-of-type(1):has(button:nth-of-type(3):active) ~ section:nth-of-type(3) {
-    --camera-dolly: 170px;
-	--camera-pedestal: 0px;
-    --camera-truck: 1000px;
-    --camera-pan: -100deg;
-    --camera-tilt: 0deg;
-    --camera-roll: 0deg;
-  }
+section:nth-of-type(1):has(button:nth-of-type(2):active)
+  ~ section:nth-of-type(3) {
+  --camera-dolly: 170px;
+  --camera-pedestal: 0px;
+  --camera-truck: 1000px;
+  --camera-pan: -100deg;
+  --camera-tilt: 0deg;
+  --camera-roll: 0deg;
+}
 
 /*-------------------------*/
 /* De vloer */
 /*-------------------------*/
 section:nth-of-type(3) > div {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 1600px; height: 1600px;
+  top: 50%;
+  left: 50%;
+  width: 1600px;
+  height: 1600px;
   transform: translate(-50%, -50%) rotateX(90deg) translateZ(-180px);
-  background-color: darkred;
-  background-image:
-    radial-gradient(#000a, #0000, #000 60%),
-    repeating-linear-gradient(#fff5 0 2px, #fff0 0 30px),
-    repeating-linear-gradient(90deg, #fff5 0 2px, #fff0 0 30px)
-    ;
+  background-color: rgb(0, 139, 86);
+  background-image: radial-gradient(#000a, #0000, #000 60%),
+    repeating-linear-gradient(#fff5 0 2px, #fff0 0 90px),
+    repeating-linear-gradient(90deg, #fff5 0 2px, #fff0 0 90px);
 }
 
 label:has(input:checked) ~ section:nth-of-type(3) > div {
-  animation: rainbow 2s ease infinite; 
+  animation: rainbow 2s ease infinite;
 }
 
 label:has(input:checked) ~ section:nth-of-type(1),
-label:has(input:checked) ~ section:nth-of-type(2){
+label:has(input:checked) ~ section:nth-of-type(2) {
   display: none;
 }
 
 @keyframes rainbow {
-  0% { background-color: red; }
-  20% { background-color: orange; }
-  40% { background-color: yellow; }
-  60% { background-color: green; }
-  80% { background-color: blue; }
-  100% { background-color: violet; }
+  0% {
+    background-color: red;
+  }
+  20% {
+    background-color: orange;
+  }
+  40% {
+    background-color: yellow;
+  }
+  60% {
+    background-color: green;
+  }
+  80% {
+    background-color: blue;
+  }
+  100% {
+    background-color: violet;
+  }
 }
 
 /*-------------------------*/
@@ -271,59 +289,49 @@ label:has(input:checked) ~ section:nth-of-type(2){
 body section:nth-of-type(3) {
   position: relative;
   transition: transform 1s;
-  transform:
-    translateZ(var(--perspective))
-    
-    rotateX(var(--camera-roll))
-    rotateY(var(--camera-pan))
-    rotateZ(var(--camera-tilt))
-    
+  transform: translateZ(var(--perspective)) rotateX(var(--camera-roll))
+    rotateY(var(--camera-pan)) rotateZ(var(--camera-tilt))
     translateX(calc(var(--camera-truck) * -1))
-    translateY(var(--camera-pedestal))
-    translateZ(var(--camera-dolly))
-    ;
+    translateY(var(--camera-pedestal)) translateZ(var(--camera-dolly));
 }
 
 label:has(input:checked) ~ section:nth-of-type(3) {
-  transform:
-    translateZ(150px)
+  transform: translateZ(150px) rotateX(var(--camera-roll))
+    rotateY(var(--camera-pan)) rotateZ(var(--camera-tilt))
+    translateX(calc(var(--camera-truck) * -1)) translateY(40vh)
+    translateZ(var(--camera-dolly));
 
-    rotateX(var(--camera-roll))
-    rotateY(var(--camera-pan))
-    rotateZ(var(--camera-tilt))
-    
-    translateX(calc(var(--camera-truck) * -1))
-    translateY(40vh)
-    translateZ(var(--camera-dolly))
-    ;
-
-    animation: turn360 4s linear infinite; 
+  animation: turn360 4s linear infinite;
 }
 
 @keyframes turn360 {
-  from { transform: rotateY(0deg); }
-  to{ transform: rotateY(360deg); }
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
 /*-------------------------*/
 /* Grijpmachine box  */
 /*-------------------------*/
 article {
-	--size-article: 10em;
-	--size-output: 2em;
+  --size-article: 10em;
+  --size-output: 2em;
   --translate-box: 5em;
 
   --max-movement: 8em;
 
-	width: var(--size-article);
-	aspect-ratio: 1;
-	transform-style: preserve-3d;
+  width: var(--size-article);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
 }
 
 /* grijper */
 /* de transitie van active naar normaal duurt heel lang */
 /* daardoor lijkt het alsof x en z stil blijven staan op het punt waar ze in de transform gekomen zijn */
-section:nth-of-type(3) article span, 
+section:nth-of-type(3) article span,
 section:nth-of-type(3) article span output {
   transition: translate 10000s linear;
 }
@@ -342,7 +350,7 @@ section:nth-of-type(3) article span output {
 }
 
 /* start of small box with attached rope */
-section:nth-of-type(3) article span output article:first-of-type{
+section:nth-of-type(3) article span output article:first-of-type {
   width: var(--size-output);
   height: calc(var(--size-output) / 2);
   position: relative;
@@ -356,7 +364,7 @@ section:nth-of-type(3) article span output article:first-of-type span {
   transform-style: preserve-3d;
   background-color: silver;
 }
-section:nth-of-type(3) article span output article:first-of-type span:after{
+section:nth-of-type(3) article span output article:first-of-type span:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -364,80 +372,133 @@ section:nth-of-type(3) article span output article:first-of-type span:after{
   background-color: silver;
 }
 
-section:nth-of-type(3) article span output article:first-of-type span:first-of-type{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:first-of-type {
   transform: rotateX(90deg) translate3d(0, -1em, 1em);
   background-color: darkgray;
 }
-section:nth-of-type(3) article span output article:first-of-type span:first-of-type::after{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:first-of-type::after {
   transform: rotateY(0deg) translateZ(-1em);
   background-color: darkgray;
 }
 
-section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(2) {
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:nth-of-type(2) {
   transform: rotateY(90deg) translate3d(1em, 0, -1em);
   height: calc(var(--size-output) / 2);
 }
-section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(2)::after{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:nth-of-type(2)::after {
   transform: rotateY(0deg) translateZ(2em);
 }
 
-section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(3) {
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:nth-of-type(3) {
   transform: rotateX(0deg) translate3d(0, 0, -2em);
   height: calc(var(--size-output) / 2);
 }
-section:nth-of-type(3) article span output article:first-of-type span:nth-of-type(3)::after{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:first-of-type
+  span:nth-of-type(3)::after {
   transform: rotateY(0deg) translateZ(2em);
 }
 /* end of small box */
 
 /* start of rope attached to box */
-section:nth-of-type(3) article span output article:nth-of-type(2){
+section:nth-of-type(3) article span output article:nth-of-type(2) {
   position: relative;
   height: 0.5em;
   transform-style: preserve-3d;
 }
-section:nth-of-type(3) article span output article:nth-of-type(2) span{
+section:nth-of-type(3) article span output article:nth-of-type(2) span {
   position: absolute;
   width: 2px;
   height: 100%;
   background-color: #fff;
   transform: translate3d(15px, 0, -1em);
-  
 }
 
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(2){
+section:nth-of-type(2):has(input:checked)
+  ~ section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(2) {
   animation: ropeMove 4s linear;
 }
 
-@keyframes ropeMove{
-  0% {height: 0.5em;}
-  50% {height: 6em;}
-  60% {height: 6em;}
-  100% {height: 0.5em;}
+@keyframes ropeMove {
+  0% {
+    height: 0.5em;
+  }
+  50% {
+    height: 6em;
+  }
+  60% {
+    height: 6em;
+  }
+  100% {
+    height: 0.5em;
+  }
 }
 /* end of rope attached to box */
 
 /* start of grabbler */
-section:nth-of-type(3) article span output article:nth-of-type(3){
+section:nth-of-type(3) article span output article:nth-of-type(3) {
   position: relative;
   width: max-content;
   height: max-content;
   transform-style: preserve-3d;
 }
 
-section:nth-of-type(3) article span output article:nth-of-type(3) div{
+section:nth-of-type(3) article span output article:nth-of-type(3) div {
   border: none;
-    position: relative;
-    background-color: inherit;
-    width: 1em;
-    height: 1em;
+  position: relative;
+  background-color: inherit;
+  width: 1em;
+  height: 1em;
 }
 
-section:nth-of-type(3) article span output article:nth-of-type(3) div:first-of-type{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:first-of-type {
   left: 0.5em;
 }
 
-section:nth-of-type(3) article span output article:nth-of-type(3) div:first-of-type span:first-of-type{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:first-of-type
+  span:first-of-type {
   position: absolute;
   width: 1em;
   height: 1em;
@@ -448,7 +509,12 @@ section:nth-of-type(3) article span output article:nth-of-type(3) div:first-of-t
 /* end of grabbler */
 
 /* start of hooks of grabbler */
-section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2){
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2) {
   position: relative;
   width: 1em;
   height: 1em;
@@ -456,158 +522,393 @@ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-typ
   transform: translate3d(0, -0.5em, -1em);
   /* background-color: red; */
 }
-section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type{
+section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2)
+  span:first-of-type {
   position: absolute;
   transform: none;
   background-color: silver;
-  clip-path: polygon(40% 91%, 34% 100%, 0 83%, 0 50%, 38% 0, 50% 0, 10% 53%, 10% 75%);
+  clip-path: polygon(
+    40% 91%,
+    34% 100%,
+    0 83%,
+    0 50%,
+    38% 0,
+    50% 0,
+    10% 53%,
+    10% 75%
+  );
   /* animation: hookLeft 4s linear paused; */
   transform-origin: top center;
 }
-section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
+section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2) {
   position: absolute;
   transform: none;
   background-color: silver;
-  clip-path: polygon(54% 91%, 59% 100%, 100% 83%, 100% 50%, 66% 0, 50% 0, 87% 53%, 86% 73%);
+  clip-path: polygon(
+    54% 91%,
+    59% 100%,
+    100% 83%,
+    100% 50%,
+    66% 0,
+    50% 0,
+    87% 53%,
+    86% 73%
+  );
   /* animation: hookRight 4s linear paused; */
   transform-origin: top center;
 }
 
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type{
+section:nth-of-type(2):has(input:checked)
+  ~ section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2)
+  span:first-of-type {
   animation: hookLeft 4s linear;
 }
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2){
+section:nth-of-type(2):has(input:checked)
+  ~ section:nth-of-type(3)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2)
+  span:nth-of-type(2) {
   animation: hookRight 4s linear;
 }
 
-@keyframes hookLeft{
-  0%{transform: rotateZ(0deg);}
-  20%{transform: rotateZ(40deg);}
-  43%{transform: rotateZ(40deg);}
-  50%{transform: rotateZ(0deg);}
-  100%{transform: rotateZ(0deg);}
+@keyframes hookLeft {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  20% {
+    transform: rotateZ(40deg);
+  }
+  43% {
+    transform: rotateZ(40deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
 }
 
-@keyframes hookRight{
-  0%{transform: rotateZ(0deg);}
-  20%{transform: rotateZ(-40deg);}
-  43%{transform: rotateZ(-40deg);}
-  50%{transform: rotateZ(0deg);}
-  100%{transform: rotateZ(0deg);}
+@keyframes hookRight {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  20% {
+    transform: rotateZ(-40deg);
+  }
+  43% {
+    transform: rotateZ(-40deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
 }
-
 
 /* end of hooks of grabbler */
 
-
 /* grijpmachine box bovenkant */
-section:nth-of-type(3) article div:nth-of-type(-n+5) {
-    position: absolute;
-    width: var(--size-article);
-    height: var(--size-article);
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.07);
-    border: 8px solid dodgerblue;
-    z-index: 999999;
-}
+section:nth-of-type(3) {
+  & article {
+    & div:nth-of-type(-n + 5) {
+      position: absolute;
+      width: var(--size-article);
+      height: var(--size-article);
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.07);
+      border: 8px solid dodgerblue;
+      z-index: 999999;
+    }
 
-section:nth-of-type(3) article div[data-full-screen="front"] {
-z-index: 1;
-transform: translateZ(var(--translate-box));
-}
+    & div:nth-of-type(n + 6) {
+      position: absolute;
+      width: calc(var(--size-article) - 12px);
+      height: calc(var(--size-article) / 3 - 6px);
+      /* background-color: rgba(255, 255, 255, 0.1); */
+      bottom: 6px;
+      left: 6px;
+      --translate-box: 5em;
+    }
 
-section:nth-of-type(3) article div[data-full-screen="back"] {
-	transform: rotateY(180deg) translateZ(var(--translate-box));
-}
+    & div[data-full-screen="front"] {
+      z-index: 1;
+      transform: translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-full-screen="right"] {
-	transform: rotateY(90deg) translateZ(var(--translate-box));
-}
+    & div[data-full-screen="back"] {
+      transform: rotateY(180deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-full-screen="left"] {
-	transform: rotateY(-90deg) translateZ(var(--translate-box)) ;
-}
+    & div[data-full-screen="right"] {
+      transform: rotateY(90deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-full-screen="top"] {
-    transform: rotateX(90deg) translateZ(var(--translate-box)) ;
-}
+    & div[data-full-screen="left"] {
+      transform: rotateY(-90deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div:nth-of-type(n+6) {
-    position: absolute;
-    width: calc(var(--size-article) - 12px);
-    height: calc(var(--size-article) / 3 - 6px);
-    background-color: rgba(255, 255, 255, 0.1);
-     bottom: 6px;
-    left: 6px; 
-	--translate-box: 5em;
-}
+    & div[data-full-screen="top"] {
+      transform: rotateX(90deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-half-screen="front"] {
-z-index: 1;
-transform: translateZ(var(--translate-box));
-}
+    & div[data-half-screen="front"] {
+      z-index: 1;
+      transform: translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-half-screen="back"] {
-	transform: rotateY(180deg) translateZ(var(--translate-box));
-}
+    & div[data-half-screen="back"] {
+      transform: rotateY(180deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-half-screen="right"] {
-	transform: rotateY(90deg) translateZ(var(--translate-box));
-}
+    & div[data-half-screen="right"] {
+      transform: rotateY(90deg) translateZ(var(--translate-box));
+    }
 
-section:nth-of-type(3) article div[data-half-screen="left"] {
-	transform: rotateY(-90deg) translateZ(var(--translate-box));
+    & div[data-half-screen="left"] {
+      transform: rotateY(-90deg) translateZ(var(--translate-box));
+    }
+
+    & div[data-half-screen] {
+      background-image: url(../img/banner.png);
+      background-size: cover;
+      background-position: top;
+      box-shadow: inset 0 -3em 1px 4px rgba(223, 223, 223, 0.3);
+    }
+  }
 }
 
 /* grabmachine bottom part */
-section:nth-of-type(3) article:nth-of-type(2) div {
-    position: absolute;
-    width: var(--size-article);
-    height: var(--size-article);
-    left: 0;
-    background-color: dodgerblue;
-    border: none;
+section:nth-of-type(3) {
+  & article:nth-of-type(2) {
+    & div {
+      position: absolute;
+      width: var(--size-article);
+      height: var(--size-article);
+      left: 0;
+      background-color: dodgerblue;
+      border: none;
 
-	--translate-box: 5em;
-}
+      --translate-box: 5em;
+    }
 
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="back"] {
-	transform: rotateY(180deg) translateZ(var(--translate-box));
-}
+    & div[data-full-screen="front"] {
+      & div {
+        position: absolute;
+        width: 4em;
+        height: 4em;
+        left: 1em;
+        bottom: 2em;
+        background: dodgerblue;
+        transform: none;
+        border-radius: 2px;
+        overflow: hidden;
 
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="right"] {
-	transform: rotateY(90deg) translateZ(var(--translate-box));
-}
+        /* diagonal line across the box */
+        & span:first-of-type, & span:nth-of-type(2){
+          position: absolute;
+          width: 100%;
+          height: 2em;
+          top: 1em;
+          left: -1em;
+          clip-path: polygon(15% 50%, 85% 50%, 100% 100%, 0 100%);
+          background-color: rgb(32, 124, 216);
+          transform: rotate(90deg);
+          
+        }
+        & span:nth-of-type(2){
+          transform: rotate(-90deg);
+          right: -1em;
+          left: auto;
+        }
 
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="left"] {
-	transform: rotateY(-90deg) translateZ(var(--translate-box));
-}
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2em;
+          top: 0;
+          border-radius: unset;
+          z-index: 1;
+          transform: rotate(180deg);
+          clip-path: polygon(25% 50%, 75% 50%, 100% 100%, 0 100%);
+          background-color: black;
+        }
 
-section:nth-of-type(3) article:nth-of-type(2) div:not([data-full-screen="top"])::before,
-section:nth-of-type(3) article:nth-of-type(2) div:not([data-full-screen="top"])::after{
-  content: "";
-  position: absolute;
-  width: 17px;
-  height: 30px;
-  background-color: greenyellow;
-}
+        &::after{
+          content: "";
+          inset: unset;
+          position: absolute;
+          width: 100%;
+          height: 2em;
+          bottom: 0;
+          border-radius: unset;
+          clip-path: polygon(25% 60%, 75% 60%, 100% 100%, 0 100%);
+          background-color: rgb(49, 66, 87);
+        }
+      }
 
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="front"]::before,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="right"]::before,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="left"]::before,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="back"]::before {
-  border-radius: 0px 50px 20px 5px /0px 50px 20px 5px;
-  bottom: -10px;
-  left: 0;
-}
+      & article {
+        & span {
+          --color-controls-c1: rgb(26, 121, 217);
+          --color-controls-c2: rgb(31, 100, 168);
+          --lever-color: greenyellow;
 
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="front"]::after,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="right"]::after,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="left"]::after,
-section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="back"]::after {
-  border-radius: 50px 0px 5px 20px /50px 0px 5px 20px;
-  bottom: -10px;
-  right: 0;
+          --triangle-sides: polygon(50% 0%, 0% 100%, 100% 100%);
+
+          transform: none;
+          position: absolute;
+        }
+
+        > span:first-of-type {
+          background-color: var(--color-controls-c1);
+          width: 7em;
+          height: 30px;
+          transform: translate3d(1.5em, 0, 0.6em) rotateX(70deg);
+
+          & span:first-of-type, & span:nth-of-type(2) {
+            transform: translateY(-40%);
+            background: radial-gradient(
+              circle at 50% 50%,
+              darkgray, 20%,
+              black
+            );
+            border-radius: 50%;
+            top: 50%;
+            left: 0.5em;
+            width: 1em;
+            height: 1em;
+            transform-style: preserve-3d;
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: .3em;
+              height: 1em;
+              left: 0.5em;
+              border-radius: 50px 50px 20px 20px /50px 50px 20px 20px;
+              transform: translate3d(-0.15em, -0.5em, 0em) rotateX(-90deg);
+              transform-origin: bottom center;
+              background-color: var(--lever-color);
+            }
+          }
+
+          & span:nth-of-type(2) {
+            left: 2em;
+          }
+
+          & span:nth-of-type(3){
+            transform: translateY(-50%);
+            background: var(--color-controls-c2);
+            border-radius: 2px;
+            top: 50%;
+            left: 4em;
+            width: 2.1em;
+            height: 1.1em;
+            transform: translateY(-40%);
+            z-index: 3;
+            transform-style: preserve-3d;
+
+            &::before {
+              content: "GET";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              font-size: 0.5em;
+              text-align: center;
+              top: 50%;
+              transform: translateY(-30%) translateZ(0.2em);
+            }
+
+            &::after{
+              content: "";
+              position: absolute;
+              width: 2em;
+              height: 1em;
+              background-color: var(--color-controls-c1);
+              transform: translateX(0.05em) translateY(0.05em) translateZ(0.05em);
+              z-index: -1;
+              border-radius: 2px;
+
+            }
+
+          }
+        }
+
+        > span:nth-of-type(2) {
+          width: 7em;
+          height: 30px;
+          background-color: var(--color-controls-c2);
+          transform: translate3d(1.5em, 0.6em, 0.6em) rotateX(-70deg);
+        }
+
+        > span:nth-of-type(3) {
+          width: 1em;
+          height: 1.4em;
+          background-color: var(--color-controls-c2);
+          clip-path: var(--triangle-sides);
+          transform: translate3d(1em, 0.55em, 0.8em) rotateZ(90deg)
+            rotateX(-90deg);
+        }
+
+        > span:nth-of-type(4) {
+          width: 1em;
+          height: 1.4em;
+          background-color: var(--color-controls-c2);
+          clip-path: var(--triangle-sides);
+          transform: translate3d(7.95em, 0.55em, 0.8em) rotateZ(90deg)
+            rotateX(-90deg);
+        }
+      }
+    }
+
+    & div[data-full-screen="back"] {
+      transform: rotateY(180deg) translateZ(var(--translate-box));
+    }
+
+    & div[data-full-screen="right"] {
+      transform: rotateY(90deg) translateZ(var(--translate-box));
+    }
+
+    & div[data-full-screen="left"] {
+      transform: rotateY(-90deg) translateZ(var(--translate-box));
+    }
+
+    & div:not([data-full-screen="top"])::before,
+    div:not([data-full-screen="top"])::after {
+      content: "";
+      position: absolute;
+      width: 17px;
+      height: 30px;
+      background-color: greenyellow;
+    }
+
+    & div::before, & div::after {
+      border-radius: 0px 50px 20px 5px /0px 50px 20px 5px;
+      bottom: -10px;
+      left: 0;
+    }
+
+    & div::after {
+      border-radius: 50px 0px 5px 20px /50px 0px 5px 20px;
+      left: auto;
+      right: 0;
+    }
+  }
 }
 
 /*-------------------------*/
@@ -615,75 +916,92 @@ section:nth-of-type(3) article:nth-of-type(2) div[data-full-screen="back"]::afte
 /*-------------------------*/
 
 /* als een button :active is, is de transitie veel sneller */
-section:nth-of-type(2):has(button:active) ~ section:nth-of-type(3) article span,
-section:nth-of-type(2):has(button:active) ~ section:nth-of-type(3) article span output {
+section:nth-of-type(2):has(button:active) ~ section:nth-of-type(3) article:first-of-type span,
+section:nth-of-type(2):has(button:active) ~ section:nth-of-type(3) article:first-of-type span output {
   transition: translate 2s linear;
 }
 
 /* x beweegt de maat van de machine naar achteren */
-section:nth-of-type(2):has(button:nth-of-type(1):active) ~ section:nth-of-type(3) article span {
-  translate: 0 0 calc(var(--max-movement) / 2 * -1);
+section:nth-of-type(2):has(button:nth-of-type(1):active) ~ section:nth-of-type(3) > article > span {
+  translate: 0 0 calc(var(--max-movement) * -1);
 }
 
 /* z beweegt weer helemaal naar voren */
-section:nth-of-type(2):has(button:nth-of-type(2):active) ~ section:nth-of-type(3) article span {
+section:nth-of-type(2):has(button:nth-of-type(2):active) ~ section:nth-of-type(3) > article > span {
   translate: 0 0 0;
 }
 
 /* x beweegt horizontaal weer naar 0 */
-section:nth-of-type(2):has(button:nth-of-type(3):active) ~ section:nth-of-type(3) article span output {
+section:nth-of-type(2):has(button:nth-of-type(3):active) ~ section:nth-of-type(3) article:first-of-type span output {
   translate: 0;
 }
 
 /* x beweegt horizontaal naar de maat van de machine min de maat van de claw */
-section:nth-of-type(2):has(button:nth-of-type(4):active) ~ section:nth-of-type(3) article span output {
+section:nth-of-type(2):has(button:nth-of-type(4):active) ~ section:nth-of-type(3) article:first-of-type span output {
   translate: calc(var(--size-article) - var(--size-output));
 }
+
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) > article > span,
+section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(3) article:first-of-type span output {
+  animation-name: resetClaw;
+  animation-duration: 2s;
+  animation-delay: 6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes resetClaw {
+  to {
+    translate: 0 0 0;
+  }
+}
+
+
 
 
 /*-------------------------*/
 /* Buttons that handle the movement */
 /*-------------------------*/
 section:nth-of-type(2) {
-    position: fixed;
-    display: flex;
-    transform-style: unset;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: #1e90ff;
-    padding: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    z-index: 99999;
-}
+  position: fixed;
+  display: flex;
+  transform-style: unset;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #1e90ff;
+  padding: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 99999;
 
-
-section:nth-of-type(2)::before,
-section:nth-of-type(2)::after {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
     width: 2em;
     height: 100%;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    background-color: #4188CE;
-}
-section:nth-of-type(2)::before {
+    background-color: #4188ce;
+  }
+
+  &::before {
     left: -0.98em;
     top: 0;
-}
-section:nth-of-type(2)::after {
+  }
+
+  &::after {
     right: -0.98em;
     top: 0;
-	transform: scaleX(-1);
-}
+    transform: scaleX(-1);
+  }
 
-section:nth-of-type(2) button {
+  & button {
     color: #fff;
-    background: #D3E1FF;
+    background: #d3e1ff;
     border: none;
     position: relative;
     cursor: pointer;
@@ -693,34 +1011,163 @@ section:nth-of-type(2) button {
     transform-style: unset;
     margin-right: 0.5em;
     font-size: 1em;
-	color: #000;
-	transition: .3s;
-}
-section:nth-of-type(2) button:after {
-	content: "";
-	position: absolute;
-	width: 5em;
+    color: #000;
+    transition: 0.3s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 5em;
+      height: 5em;
+      bottom: -0.6em;
+      background: #a4b5e3;
+      border-radius: 5em;
+      left: 0;
+      z-index: -1;
+      transition: 0.3s;
+    }
+
+    &:active {
+      box-shadow: inset 0.2em 0.2em 0.2em #0009;
+      transition: 0.3s;
+
+      &::after {
+        bottom: 0em;
+      }
+    }
+  }
+
+  & label {
+    background: #ffbfbf;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5em;
+    width: 5em;
     height: 5em;
-	bottom: -0.6em;
-	background: #A4B5E3;
-	border-radius: 5em;
-	left: 0;
-	z-index: -1;
-	transition: .3s;
+    margin-right: 0;
+    font-size: 1em;
+    color: #000;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 5em;
+    transform-style: unset;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 5em;
+      height: 5em;
+      bottom: -0.6em;
+      background: #d06464;
+      border-radius: 5em;
+      left: 0;
+      z-index: -1;
+      transition: 0.3s;
+    }
+
+    &:has(input:checked) {
+      background: #737373;
+      /* box-shadow: inset 0.2em 0.2em 0.2em #0009; */
+      cursor: not-allowed;
+    }
+
+    &:has(input:checked)::after {
+      background: #4b4b4b;
+    }
+
+    & input {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      position: absolute;
+      width: 5.5em;
+      height: 5.5em;
+      left: 0;
+      border-radius: 5em;
+      cursor: pointer;
+
+      &:checked {
+        cursor: not-allowed;
+      }
+    }
+  }
 }
 
-section:nth-of-type(2) button:last-child{
-	background: #FFBFBF;
-}
-section:nth-of-type(2) button:last-child:after {
-	background: #D06464;
-}
-
-section:nth-of-type(2) button:active{
-	box-shadow:inset .2em .2em .2em #0009;
-	transition: .3s;
+section:nth-of-type(2):has(input:checked) button {
+  animation-delay: 5.5s;
+  animation-duration: 1s;
+  animation-name: greyButtons;
+  animation-fill-mode: forwards;
+  cursor: not-allowed;
 }
 
-section:nth-of-type(2) button:active:after {
-	bottom: 0em;
+section:nth-of-type(2):has(input:checked) button::after {
+  animation-delay: 5.5s;
+  animation-duration: 1s;
+  animation-name: darkgreyButtons;
+  animation-fill-mode: forwards;
+  cursor: not-allowed;
+}
+
+@keyframes greyButtons {
+  to {
+    background: #737373;
+  }
+}
+
+@keyframes darkgreyButtons {
+  to {
+    background: #4b4b4b;
+  }
+}
+
+/*-------------------------*/
+/* Dialog with retry button */
+/*-------------------------*/
+
+/* Initial styling for dialog */
+dialog {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 5s, opacity 0.2s;
+  width: 50dvw;
+  height: 30dvh;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  border: none;
+
+  &::backdrop {
+    background-color: rgb(0 0 0 / 25%);
+  }
+}
+
+/* Dialog display when input is checked */
+section:nth-of-type(2):has(input:checked) ~ dialog {
+  animation-duration: 2s;
+  animation-delay: 5s;
+  animation-name: showDialog;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation-fill-mode: forwards;
+  transform-style: unset;
+}
+
+@keyframes showDialog {
+  0% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
 }
