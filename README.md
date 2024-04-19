@@ -157,6 +157,11 @@ Because I did not go to school I have not received any feedback or tips but do h
 ## ✅ What worked the best or went well this week?
 This was the last week for this project. Since I Broke my collarbone I have to do a "herkansing" (resit) as they say in Dutch which will be on the 6th of May. So Looking back at the previous week I wanted to do some last things. Some dots on the "i" as Sanne would have said. I really enjoyed figuring out how to work in 3D so makeing some components for the title area was really cool to do and one of the last tings aswell. Also te retry function I adden when clicking on the "get" button is someting im proud of because this makes sure you can play it again because it resets the game (by refreshing te page). 
 
+### Making the Title header
+| Overall sketch | -> Step 1 |
+|-------|-------|
+| <img height="150" style="object-fit: cover;" src="https://github.com/Kboere/css-to-the-rescue/assets/112857604/4840df71-bc71-47b4-84a7-916c8554ca05">| <img height="150" style="object-fit: cover;" src="https://github.com/Kboere/css-to-the-rescue/assets/112857604/47e630ba-3590-4a89-9288-7562ddb8169e"> |
+
 Something I still had to do and had forgotten was a container query. With some help of sanne i made it work and understood how this could benefit in readabillity of the CSS code.
 Beneath you wil see how I implented the container query.
 
