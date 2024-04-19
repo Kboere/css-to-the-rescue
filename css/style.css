@@ -43,7 +43,7 @@ body {
 /*-------------------------*/
 /* Switch button (party-mode) */
 /*-------------------------*/
-body{
+body {
   > label {
     position: absolute;
     left: 0;
@@ -65,29 +65,34 @@ body{
     }
 
     & input {
-       cursor: pointer;
-       display: block;
-       outline: transparent;
-       position: relative;
-       width: 75px;
-       height: 150px;
-       transition: background-color var(--trans-dur),
+      cursor: pointer;
+      display: block;
+      outline: transparent;
+      position: relative;
+      width: 75px;
+      height: 150px;
+      transition:
+        background-color var(--trans-dur),
         box-shadow calc(var(--trans-dur) / 2);
-       -webkit-appearance: none;
-       appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
 
-       &::before, &::after {
+      &::before,
+      &::after {
         content: "";
         display: block;
         position: absolute;
-        transition: box-shadow var(--trans-dur) var(--trans-timing),
-        transform var(--trans-dur) var(--trans-timing);
+        transition:
+          box-shadow var(--trans-dur) var(--trans-timing),
+          transform var(--trans-dur) var(--trans-timing);
       }
 
-       &::before {
+      &::before {
         background-color: hsl(var(--hue), 10%, 90%);
         border-radius: 0.0625em;
-        box-shadow: -0.0625em 0 0 white inset, 0 0 0 hsl(var(--hue), 10%, 80%) inset;
+        box-shadow:
+          -0.0625em 0 0 white inset,
+          0 0 0 hsl(var(--hue), 10%, 80%) inset;
         top: 50%;
         left: 0;
         width: calc(100% - 5px);
@@ -99,7 +104,8 @@ body{
       &::after {
         background-color: hsl(var(--hue-center), 70%, 30%);
         border-radius: 50%;
-        box-shadow: 0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset,
+        box-shadow:
+          0.0625em -0.0625em 0 hsl(var(--hue-center), 70%, 20%) inset,
           0 0 0 0.125em hsl(var(--hue-center), 70%, 30%) inset,
           -0.1875em 0.1875em 0 hsl(var(--hue-center), 70%, 40%) inset;
         top: 2.5em;
@@ -117,11 +123,16 @@ body{
       }
 
       &:focus-visible {
-        box-shadow: 0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset,
+        box-shadow:
+          0 0 0 0.0625em hsl(var(--hue), 90%, 70%) inset,
           0 0 0.125em 0.125em hsl(var(--hue), 90%, 50%);
       }
     }
   }
+}
+
+html:has([value="party-mode"]:checked) {
+  --party-mode: true;
 }
 
 /*-------------------------*/
@@ -141,7 +152,8 @@ section:nth-of-type(1) {
   border-radius: 10px 0px 0px 10px;
   transition: 1s ease;
 
-  & label, & label input {
+  & label,
+  & label input {
     position: absolute;
     height: 40px;
     width: 40px;
@@ -151,19 +163,20 @@ section:nth-of-type(1) {
     appearance: none;
   }
 
-  & label::before, & label input::after {
+  & label::before,
+  & label input::after {
     display: none;
   }
 
-  & label input:hover::before, & label input:focus-visible::before {
+  & label input:hover::before,
+  & label input:focus-visible::before {
     background: var(--primaire-color);
     color: #fff;
     cursor: pointer;
   }
 
-  & label{
-    & input{
-
+  & label {
+    & input {
       &::before {
         content: "❏";
         display: block;
@@ -203,7 +216,10 @@ section:nth-of-type(1) {
       margin-top: 0;
     }
 
-    &:focus-visible, &:focus-visible svg, &:hover, &:hover svg {
+    &:focus-visible,
+    &:focus-visible svg,
+    &:hover,
+    &:hover svg {
       background: var(--primaire-color);
       color: #fff;
       fill: #fff;
@@ -216,8 +232,7 @@ section:nth-of-type(1):has(input:checked) {
   right: 0;
 }
 
-section:nth-of-type(1):has(button:nth-of-type(1):active)
-  ~ section:nth-of-type(4) {
+section:nth-of-type(1):has(button:nth-of-type(1):active) ~ section:nth-of-type(4) {
   --camera-dolly: 170px;
   --camera-pedestal: 0px;
   --camera-truck: -1000px;
@@ -226,16 +241,14 @@ section:nth-of-type(1):has(button:nth-of-type(1):active)
   --camera-roll: 0deg;
 }
 
-section:nth-of-type(1):has(button:nth-of-type(2):active)
-  ~ section:nth-of-type(4) {
+section:nth-of-type(1):has(button:nth-of-type(2):active) ~ section:nth-of-type(4) {
   --camera-dolly: -580px;
   --camera-pedestal: 500px;
   --camera-tilt: 0deg;
   --camera-roll: -40deg;
 }
 
-section:nth-of-type(1):has(button:nth-of-type(3):active)
-  ~ section:nth-of-type(4) {
+section:nth-of-type(1):has(button:nth-of-type(3):active) ~ section:nth-of-type(4) {
   --camera-dolly: 170px;
   --camera-pedestal: 0px;
   --camera-truck: 1000px;
@@ -255,8 +268,7 @@ section:nth-of-type(4) > div {
   height: 1600px;
   transform: translate(-50%, -50%) rotateX(90deg) translateZ(-180px);
   background-color: rgb(35 35 35 / 73%);
-  background-image: radial-gradient(#000a, #0000, #000 60%),
-    repeating-linear-gradient(#fff5 0 2px, #fff0 0 90px),
+  background-image: radial-gradient(#000a, #0000, #000 60%), repeating-linear-gradient(#fff5 0 2px, #fff0 0 90px),
     repeating-linear-gradient(90deg, #fff5 0 2px, #fff0 0 90px);
 }
 
@@ -264,10 +276,10 @@ label:has(input:checked) ~ section:nth-of-type(4) > div {
   animation: rainbow 2s ease infinite;
 }
 
-label:has(input:checked) ~ section:nth-of-type(1),
+/* label:has(input:checked) ~ section:nth-of-type(1),
 label:has(input:checked) ~ section:nth-of-type(2) {
   display: none;
-}
+} */
 
 @keyframes rainbow {
   0% {
@@ -297,17 +309,14 @@ label:has(input:checked) ~ section:nth-of-type(2) {
 body section:nth-of-type(4) {
   position: relative;
   transition: transform 1s;
-  transform: translateZ(var(--perspective)) rotateX(var(--camera-roll))
-    rotateY(var(--camera-pan)) rotateZ(var(--camera-tilt))
-    translateX(calc(var(--camera-truck) * -1))
-    translateY(var(--camera-pedestal)) translateZ(var(--camera-dolly));
+  transform: translateZ(var(--perspective)) rotateX(var(--camera-roll)) rotateY(var(--camera-pan))
+    rotateZ(var(--camera-tilt)) translateX(calc(var(--camera-truck) * -1)) translateY(var(--camera-pedestal))
+    translateZ(var(--camera-dolly));
 }
 
 label:has(input:checked) ~ section:nth-of-type(4) {
-  transform: translateZ(150px) rotateX(var(--camera-roll))
-    rotateY(var(--camera-pan)) rotateZ(var(--camera-tilt))
-    translateX(calc(var(--camera-truck) * -1)) translateY(40vh)
-    translateZ(var(--camera-dolly));
+  transform: translateZ(150px) rotateX(var(--camera-roll)) rotateY(var(--camera-pan)) rotateZ(var(--camera-tilt))
+    translateX(calc(var(--camera-truck) * -1)) translateY(40vh) translateZ(var(--camera-dolly));
 
   animation: turn360 4s linear infinite;
 }
@@ -481,16 +490,7 @@ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-typ
   position: absolute;
   transform: none;
   background-color: silver;
-  clip-path: polygon(
-    40% 91%,
-    34% 100%,
-    0 83%,
-    0 50%,
-    38% 0,
-    50% 0,
-    10% 53%,
-    10% 75%
-  );
+  clip-path: polygon(40% 91%, 34% 100%, 0 83%, 0 50%, 38% 0, 50% 0, 10% 53%, 10% 75%);
   /* animation: hookLeft 4s linear paused; */
   transform-origin: top center;
 }
@@ -498,24 +498,29 @@ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-typ
   position: absolute;
   transform: none;
   background-color: silver;
-  clip-path: polygon(
-    54% 91%,
-    59% 100%,
-    100% 83%,
-    100% 50%,
-    66% 0,
-    50% 0,
-    87% 53%,
-    86% 73%
-  );
+  clip-path: polygon(54% 91%, 59% 100%, 100% 83%, 100% 50%, 66% 0, 50% 0, 87% 53%, 86% 73%);
   /* animation: hookRight 4s linear paused; */
   transform-origin: top center;
 }
 
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) span:first-of-type {
+section:nth-of-type(2):has(input:checked)
+  ~ section:nth-of-type(4)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2)
+  span:first-of-type {
   animation: hookLeft 4s linear;
 }
-section:nth-of-type(2):has(input:checked) ~ section:nth-of-type(4) article span output article:nth-of-type(3) div:nth-of-type(2) span:nth-of-type(2) {
+section:nth-of-type(2):has(input:checked)
+  ~ section:nth-of-type(4)
+  article
+  span
+  output
+  article:nth-of-type(3)
+  div:nth-of-type(2)
+  span:nth-of-type(2) {
   animation: hookRight 4s linear;
 }
 
@@ -597,10 +602,9 @@ section:nth-of-type(4) {
     }
 
     & div[data-full-screen="top"] {
-     
       transform: rotateX(90deg) translateZ(calc(var(--translate-box) + 3em));
 
-      & div{
+      & div {
         height: 3em;
         width: var(--size-article);
         background-color: rgb(9, 97, 186);
@@ -609,13 +613,13 @@ section:nth-of-type(4) {
         overflow: hidden;
       }
 
-      & div:first-of-type{
+      & div:first-of-type {
         transform: rotateX(-90deg) translate3d(-8px, 1.5em, 8em);
         background-color: black;
         display: flex;
         align-items: center;
-      
-        &::after{
+
+        &::after {
           content: "";
           position: absolute;
           border: 2px silver dotted;
@@ -625,7 +629,7 @@ section:nth-of-type(4) {
           z-index: 3;
         }
 
-        & h1{
+        & h1 {
           margin: 0;
           font-size: 10px;
           margin-left: 1em;
@@ -638,14 +642,14 @@ section:nth-of-type(4) {
       & div:nth-of-type(2) {
         transform: rotateX(-90deg) translate3d(-8px, 1.5em, -2em);
       }
-      & div:nth-of-type(3){
+      & div:nth-of-type(3) {
         transform: rotateX(0deg) rotateY(90deg) translate3d(1.5em, -0.5em, 8em);
-        height: var(--size-article) ;
+        height: var(--size-article);
         width: 3em;
       }
-      & div:nth-of-type(4){
+      & div:nth-of-type(4) {
         transform: rotateX(0deg) rotateY(90deg) translate3d(1.5em, -0.5em, -2em);
-        height: var(--size-article) ;
+        height: var(--size-article);
         width: 3em;
       }
     }
@@ -679,10 +683,10 @@ section:nth-of-type(4) {
 @keyframes title {
   0% {
     transform: translateX(150%);
-}
-100% {
+  }
+  100% {
     transform: translateX(-150%);
-}
+  }
 }
 
 /* grabmachine bottom part */
@@ -710,8 +714,9 @@ section:nth-of-type(4) {
         transform: none;
         border-radius: 2px;
         overflow: hidden;
-        
-        & span:first-of-type, & span:nth-of-type(2){
+
+        & span:first-of-type,
+        & span:nth-of-type(2) {
           position: absolute;
           width: 100%;
           height: 2em;
@@ -720,9 +725,8 @@ section:nth-of-type(4) {
           clip-path: polygon(15% 50%, 85% 50%, 100% 100%, 0 100%);
           background-color: #f2f2f2;
           transform: rotate(90deg);
-          
         }
-        & span:nth-of-type(2){
+        & span:nth-of-type(2) {
           transform: rotate(-90deg);
           right: -1em;
           left: auto;
@@ -741,7 +745,7 @@ section:nth-of-type(4) {
           background-color: #d7d7d7;
         }
 
-        &::after{
+        &::after {
           content: "";
           inset: unset;
           position: absolute;
@@ -772,13 +776,10 @@ section:nth-of-type(4) {
           height: 30px;
           transform: translate3d(1.5em, 0, 0.6em) rotateX(70deg);
 
-          & span:first-of-type, & span:nth-of-type(2) {
+          & span:first-of-type,
+          & span:nth-of-type(2) {
             transform: translateY(-40%);
-            background: radial-gradient(
-              circle at 50% 50%,
-              darkgray, 20%,
-              black
-            );
+            background: radial-gradient(circle at 50% 50%, darkgray, 20%, black);
             border-radius: 50%;
             top: 50%;
             left: 0.5em;
@@ -789,7 +790,7 @@ section:nth-of-type(4) {
             &::before {
               content: "";
               position: absolute;
-              width: .3em;
+              width: 0.3em;
               height: 1em;
               left: 0.5em;
               border-radius: 50px 50px 20px 20px /50px 50px 20px 20px;
@@ -803,7 +804,7 @@ section:nth-of-type(4) {
             left: 2em;
           }
 
-          & span:nth-of-type(3){
+          & span:nth-of-type(3) {
             transform: translateY(-50%);
             background: var(--color-controls-c2);
             border-radius: 2px;
@@ -826,7 +827,7 @@ section:nth-of-type(4) {
               transform: translateY(-30%) translateZ(0.2em);
             }
 
-            &::after{
+            &::after {
               content: "";
               position: absolute;
               width: 2em;
@@ -835,9 +836,7 @@ section:nth-of-type(4) {
               transform: translateX(0.05em) translateY(0.05em) translateZ(0.05em);
               z-index: -1;
               border-radius: 2px;
-
             }
-
           }
         }
 
@@ -853,8 +852,7 @@ section:nth-of-type(4) {
           height: 1.4em;
           background-color: var(--color-controls-c2);
           clip-path: var(--triangle-sides);
-          transform: translate3d(1em, 0.55em, 0.8em) rotateZ(90deg)
-            rotateX(-90deg);
+          transform: translate3d(1em, 0.55em, 0.8em) rotateZ(90deg) rotateX(-90deg);
         }
 
         > span:nth-of-type(4) {
@@ -862,8 +860,7 @@ section:nth-of-type(4) {
           height: 1.4em;
           background-color: var(--color-controls-c2);
           clip-path: var(--triangle-sides);
-          transform: translate3d(7.95em, 0.55em, 0.8em) rotateZ(90deg)
-            rotateX(-90deg);
+          transform: translate3d(7.95em, 0.55em, 0.8em) rotateZ(90deg) rotateX(-90deg);
         }
       }
     }
@@ -892,7 +889,8 @@ section:nth-of-type(4) {
       background-color: silver;
     }
 
-    & div::before, & div::after {
+    & div::before,
+    & div::after {
       border-radius: 0px 50px 20px 5px /0px 50px 20px 5px;
       bottom: -10px;
       left: 0;
@@ -1122,7 +1120,9 @@ section:nth-of-type(2):has(input:checked) button::after {
 dialog {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 5s, opacity 0.2s;
+  transition:
+    visibility 0s linear 5s,
+    opacity 0.2s;
   width: 50dvw;
   height: 30dvh;
   display: flex;
@@ -1168,76 +1168,10 @@ section:nth-of-type(2):has(input:checked) ~ dialog {
 /* Discoball partymode */
 /*-------------------------*/
 
-label:has(input:checked) ~ section:nth-of-type(3) {
-  display: block;
-  top: 0;
-}
-
 section:nth-of-type(3) {
   position: absolute;
   display: none;
   z-index: 999999;
-  /* transform: rotate(90deg); */
-  
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 20px;
-    left: 20px;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: silver;
-    background-image: linear-gradient(90deg,  transparent 0%, #fff 50%, transparent 100%);
-    background-size: 40px;
-    animation: disco-ball-shimmer 2s linear infinite;
-  }
-
-  & div{
-    position: relative;
-  
-    &::before, &::after {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 8px;
-    height: 300vw;
-    background: #fff;
-    pointer-events: none;
-    transform-origin: top center;
-    animation: disco-lights-mode-1 2s infinite alternate cubic-bezier(0.6, 0.04, 0.98, 0.335);
-    }
-  }
-
-  & div:first-of-type{
-    &::before {
-      box-shadow: 0px 0px 30px 10px #73AD42, 0px 0px 150px 10px #73AD42;
-      animation-duration: 3s;
-    }
-
-    &::after {
-      box-shadow: 0px 0px 30px 10px #EE6862, 0px 0px 150px 10px #EE6862;
-      animation-name: disco-lights-mode-2;
-      animation-duration: 1.5s;
-    }
-  }
-
-  & div:nth-of-type(2){
-
-    &::before {
-      box-shadow: 0px 0px 30px 10px #FABE0E, 0px 0px 150px 10px #FABE0E;
-      animation-name: disco-lights-mode-3;
-      animation-duration: 1.5s;
-    }
-    
-    &::after {
-      box-shadow: 0px 0px 30px 10px #016583, 0px 0px 150px 10px #016583;
-      animation-name: disco-lights-mode-4;
-      animation-duration: 4s;
-    }
-  }
 }
 
 @keyframes disco-ball-shimmer {
@@ -1245,43 +1179,143 @@ section:nth-of-type(3) {
     background-position: 0 0;
   }
 
-  100% { 
+  100% {
     background-position: 40px 0;
-}
+  }
 }
 
- @keyframes disco-lights-mode-1 {
+@keyframes disco-lights-mode-1 {
   0% {
-     transform: rotate(90deg);
+    transform: rotate(90deg);
   }
   100% {
     transform: rotate(-145deg);
-}
+  }
 }
 
- @keyframes disco-lights-mode-2 {
+@keyframes disco-lights-mode-2 {
   0% {
-     transform: rotate(-90deg);
+    transform: rotate(-90deg);
   }
   100% {
     transform: rotate(145deg);
-}
+  }
 }
 
 @keyframes disco-lights-mode-3 {
   0% {
-     transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(165deg);
-}
+  }
 }
 
 @keyframes disco-lights-mode-4 {
   0% {
-     transform: rotate(-135deg);
+    transform: rotate(-135deg);
   }
   100% {
     transform: rotate(135deg);
+  }
 }
-} 
+
+/*-------------------------*/
+/* partymode container query */
+/*-------------------------*/
+@container style(--party-mode: true) {
+  label:has(input:checked) ~ section:nth-of-type(1),
+  label:has(input:checked) ~ section:nth-of-type(2) {
+    display: none;
+  }
+
+  label:has(input:checked) ~ section:nth-of-type(3) {
+    display: block;
+    top: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 20px;
+      left: 20px;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: silver;
+      background-image: linear-gradient(90deg, transparent 0%, #fff 50%, transparent 100%);
+      background-size: 40px;
+      animation: disco-ball-shimmer 2s linear infinite;
+    }
+  
+    & div {
+      position: relative;
+  
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 8px;
+        height: 300vw;
+        background: #fff;
+        pointer-events: none;
+        transform-origin: top center;
+        animation: disco-lights-mode-1 2s infinite alternate cubic-bezier(0.6, 0.04, 0.98, 0.335);
+      }
+    }
+  
+    & div:first-of-type {
+      &::before {
+        box-shadow:
+          0px 0px 30px 10px #73ad42,
+          0px 0px 150px 10px #73ad42;
+        animation-duration: 3s;
+      }
+  
+      &::after {
+        box-shadow:
+          0px 0px 30px 10px #ee6862,
+          0px 0px 150px 10px #ee6862;
+        animation-name: disco-lights-mode-2;
+        animation-duration: 1.5s;
+      }
+    }
+  
+    & div:nth-of-type(2) {
+      &::before {
+        box-shadow:
+          0px 0px 30px 10px #fabe0e,
+          0px 0px 150px 10px #fabe0e;
+        animation-name: disco-lights-mode-3;
+        animation-duration: 1.5s;
+      }
+  
+      &::after {
+        box-shadow:
+          0px 0px 30px 10px #016583,
+          0px 0px 150px 10px #016583;
+        animation-name: disco-lights-mode-4;
+        animation-duration: 4s;
+      }
+    }
+  }
+}
+
+/* reduced motion here */
+@media (prefers-reduced-motion: reduce) {
+  section:nth-of-type(4) {
+    & article {
+      & div[data-full-screen="top"] {
+        & div:first-of-type {
+          justify-content: center;
+          & h1 {
+            margin-left: 0;
+            animation: none;
+          }
+        }
+      }
+    }
+  }
+}
