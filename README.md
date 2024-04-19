@@ -152,14 +152,12 @@ Because I did not go to school I have not received any feedback or tips but do h
 |----------|-----------|
 |Monday 11/03 | <ul><li>Fixing the clamp() method with the codepen from sanne</li><li>Working on small design stuff</li></ul> |
 |Tuesday 12/03 | <ul><li>Cleaning up some code</li><li>fixing the buttons for looking around the claw machine</li></ul> |
-|Thursday 14/03 | <ul><li>creating the claw</li></ul> |
-
-
-## 🖊️ All small tests with codepen
-* [Better method to have a object inside a container than clamp() method](https://codepen.io/Kboere/pen/vYMKVga)
-* [End result of week 3](https://codepen.io/Kboere/pen/zYXNqOg)
+|Thursday 14/03 | <ul><li>creating the claw</li><li>fixing "get" button</li><li>try again button</li></ul> |
+|Friday 19/04 | <ul><li>Creating a container query for the party mode</li><li>finish readme</li></ul>
 
 ## ✅ What worked the best or went well this week?
+
+
 ### **Things I have learned this week:**
 
 ## 👨🏻‍🔧 Adjustments/fixes and Feedback?
