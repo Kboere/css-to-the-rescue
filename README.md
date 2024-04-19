@@ -150,16 +150,116 @@ Because I did not go to school I have not received any feedback or tips but do h
 ## ⚙️ Week planning
 |What day? | What is done that day?|
 |----------|-----------|
-|Monday 11/03 | <ul><li>Fixing the clamp() method with the codepen from sanne</li><li>Working on small design stuff</li></ul> |
-|Tuesday 12/03 | <ul><li>Cleaning up some code</li><li>fixing the buttons for looking around the claw machine</li></ul> |
-|Thursday 14/03 | <ul><li>creating the claw</li><li>fixing "get" button</li><li>try again button</li></ul> |
+|Monday 18/03 | <ul><li>Adding title to project</li><li>fixing "get" button</li><li>try again button</li></ul> |
+|Wednesday 20/03 | <ul><li>adding party lasers</li></ul>
 |Friday 19/04 | <ul><li>Creating a container query for the party mode</li><li>finish readme</li></ul>
 
 ## ✅ What worked the best or went well this week?
+This was the last week for this project. Since I Broke my collarbone I have to do a "herkansing" (resit) as they say in Dutch which will be on the 6th of May. So Looking back at the previous week I wanted to do some last things. Some dots on the "i" as Sanne would have said. I really enjoyed figuring out how to work in 3D so makeing some components for the title area was really cool to do and one of the last tings aswell. Also te retry function I adden when clicking on the "get" button is someting im proud of because this makes sure you can play it again because it resets the game (by refreshing te page). 
+
+Something I still had to do and had forgotten was a container query. With some help of sanne i made it work and understood how this could benefit in readabillity of the CSS code.
+Beneath you wil see how I implented the container query.
+
+```html
+<label role="switch">
+      <input type="checkbox" name="party-mode" value="party-mode" /> <!-- adding contaier query via value attr.-->
+</label>
+```
+
+```CSS
+html:has([value="party-mode"]:checked) {
+  --party-mode: true;
+}
+
+@container style(--party-mode: true) {
+  label:has(input:checked) ~ section:nth-of-type(1),
+  label:has(input:checked) ~ section:nth-of-type(2) {
+    display: none;
+  }
+
+  label:has(input:checked) ~ section:nth-of-type(3) {
+    display: block;
+    top: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 20px;
+      left: 20px;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: silver;
+      background-image: linear-gradient(90deg, transparent 0%, #fff 50%, transparent 100%);
+      background-size: 40px;
+      animation: disco-ball-shimmer 2s linear infinite;
+    }
+  
+    & div {
+      position: relative;
+  
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 8px;
+        height: 300vw;
+        background: #fff;
+        pointer-events: none;
+        transform-origin: top center;
+        animation: disco-lights-mode-1 2s infinite alternate cubic-bezier(0.6, 0.04, 0.98, 0.335);
+      }
+    }
+  
+    & div:first-of-type {
+      &::before {
+        box-shadow:
+          0px 0px 30px 10px #73ad42,
+          0px 0px 150px 10px #73ad42;
+        animation-duration: 3s;
+      }
+  
+      &::after {
+        box-shadow:
+          0px 0px 30px 10px #ee6862,
+          0px 0px 150px 10px #ee6862;
+        animation-name: disco-lights-mode-2;
+        animation-duration: 1.5s;
+      }
+    }
+  
+    & div:nth-of-type(2) {
+      &::before {
+        box-shadow:
+          0px 0px 30px 10px #fabe0e,
+          0px 0px 150px 10px #fabe0e;
+        animation-name: disco-lights-mode-3;
+        animation-duration: 1.5s;
+      }
+  
+      &::after {
+        box-shadow:
+          0px 0px 30px 10px #016583,
+          0px 0px 150px 10px #016583;
+        animation-name: disco-lights-mode-4;
+        animation-duration: 4s;
+      }
+    }
+  }
+}
+```
 
 
 ### **Things I have learned this week:**
+- how container queries can help with readabillity
 
 ## 👨🏻‍🔧 Adjustments/fixes and Feedback?
+So seeing that this was the last week to qwork on the project. There isn't mucht to fix after this right? Wrong! Because a project is never done they say. However, during this project I really enjoyed working with CSS, looking for projects who have cool stuff and seeing if this would fit within my project, all the bizar, cool and interesting codepens and many more. I do have some stuff I could add if I had the time:
 
-
+### Fixes for later
+- Making the lasers in 3D
+- Being able to grab a suprise from the claw machine
+- When moving the buttons from ⬆️⬇️⬅️➡️ the sticks on teh clawmachine should move aswell
